@@ -1,0 +1,31 @@
+{
+  "title": "Geçmişten Günümüze: Türk-İslam Medeniyetinin Küresel Mirası",
+  "subtitle": "TİKA ve Yunus Emre Enstitüsü'nün Küresel İzi",
+  "lead": "Bugün Türkiye Cumhuriyeti; Balkanlardan Orta Asya'ya, Afrika'dan Latin Amerika'ya kadar dünyanın dört bir yanında kültür merkezleri açıyor, el yazması kütüphanelerini dijitalleştiriyor, asırlık köprü ve külliyeleri restore ediyor. Peki bu evrensel mirasın kökleri nerede başladı?",
+  "tika": {
+    "name": "TİKA (Türk İşbirliği ve Koordinasyon Ajansı)",
+    "established": "1992",
+    "scope": "5 Kıtada 150'den fazla ülke, 30.000+ Kalkınma & Koruma Projesi",
+    "highlights": [
+      "Tunus Rakkada İslam Sanatları Müzesi el yazması dijitalleştirme laboratuvarı",
+      "Moğolistan'da Göktürk Dönemi anıtları ve kitabelerinin restorasyonu",
+      "Balkanlar genelinde 80'den fazla cami, köprü, mevlevihane ve şifahane ihyası",
+      "Kafkasya, Afrika ve Orta Asya'da temiz su, tarım ve sağlık projeleri"
+    ]
+  },
+  "yee": {
+    "name": "Yunus Emre Enstitüsü",
+    "established": "2009",
+    "scope": "Dünya Genelinde 80'den fazla Kültür Merkezi",
+    "highlights": [
+      "Dünyanın dört bir yanında Türkçe öğretimi ve kültür diplomasisi",
+      "Senegal'de geleneksel cam altı resim sanatı atölyeleri",
+      "Japonya'da 12 Türkçe konuşan ülkeden 50 sanatçının katıldığı turneler",
+      "Hırvatistan'da Sarıkeçili Yörüklerinin hayatını yansıtan fotoğraf sergileri"
+    ]
+  },
+  "bridgeQuestion": {
+    "question": "Bu zengin kültür ve bilim köprüsü nasıl inşa edildi?",
+    "explanation": "1040 Dandanakan Zaferi ile Türkistan'da parlayan meşale; Horasan, İsfahan ve Bağdat üzerinden Anadolu'ya (Konya, Diyarbakır, Sivas, Erzurum) taşındı. Şimdi bu kervana katılma ve ilim mirasımızı keşfetme vakti!"
+  }
+}

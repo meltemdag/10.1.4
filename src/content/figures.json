@@ -1,0 +1,143 @@
+[
+  {
+    "id": "yesevi",
+    "name": "Hoca Ahmed Yesevi",
+    "title": "Pîr-i Türkistan",
+    "period": "XII. Yüzyıl • Türkistan",
+    "icon": "📖",
+    "primaryWork": "Dîvân-ı Hikmet",
+    "coreContribution": "Tasavvufu Türkçe hikmetlerle yaydı; Horasan erenleriyle Anadolu'nun mayasını çaldı.",
+    "quote": "Sakın yalancı olma, âşık ve sâdık ol. Doğru olan kulunu Allâh bilir.",
+    "image": "/assets/portraits/yesevi.jpg",
+    "tagOptions": [
+      { "id": "tasavvuf", "label": "🌿 Tasavvuf & Hoşgörü", "color": "#059669" },
+      { "id": "dil", "label": "📖 Dil & Edebiyat", "color": "#2563eb" }
+    ]
+  },
+  {
+    "id": "kashgarli",
+    "name": "Kâşgarlı Mahmud",
+    "title": "İlk Türk Dilbilimci & Coğrafyacı",
+    "period": "XI. Yüzyıl • Kâşgar",
+    "icon": "🗺️",
+    "primaryWork": "Dîvânü Lugâti't-Türk",
+    "coreContribution": "İlk Türkçe sözlüğü yazdı, Türk dilinin zenginliğini kanıtladı ve ilk Türk dünyası haritasını çizdi.",
+    "quote": "Damlaya damlaya göl olur (Tama tama köl bolur).",
+    "image": "/assets/portraits/kashgarli.jpg",
+    "detailImage": "/assets/maps/divan_dunya_haritasi.jpg",
+    "detailCaption": "Divânü Lugâti't-Türk'teki Dairesel Dünya Haritası",
+    "tagOptions": [
+      { "id": "dil", "label": "📖 Dil & Sözlük", "color": "#2563eb" },
+      { "id": "bilim", "label": "🔭 Coğrafya & Harita", "color": "#d97706" }
+    ]
+  },
+  {
+    "id": "hayyam",
+    "name": "Ömer Hayyam",
+    "title": "Astronom & Matematikçi",
+    "period": "1039-1123 • İsfahan",
+    "icon": "📐",
+    "primaryWork": "Zîc-i Melikşahî & Rubailer",
+    "coreContribution": "3. derece denklemleri geometrik yolla çözdü, Celali Takvimi'ni ve İsfahan Rasathanesi'ni kurdu.",
+    "quote": "Bir nefestir dünyadan alacağın, hoşça yaşa.",
+    "image": "/assets/portraits/hayyam.jpg",
+    "tagOptions": [
+      { "id": "bilim", "label": "🔭 Cebir & Astronomi", "color": "#d97706" },
+      { "id": "dil", "label": "📖 Şiir & Felsefe", "color": "#2563eb" }
+    ]
+  },
+  {
+    "id": "cezeri",
+    "name": "Cezeri (Ebû'l-İzz)",
+    "title": "Mühendislik & Robotik Öncüsü",
+    "period": "1136-1206 • Cizre/Diyarbakır",
+    "icon": "⚙️",
+    "primaryWork": "Kitâbü'l-Hiyel (Mekanik)",
+    "coreContribution": "Sibernetiğin kurucusu; Fil Su Saati, krank mili, mum saatleri ve ilk otomat robotları tasarladı.",
+    "quote": "Uygulanmayan ilim, doğru ile yanlış arasında asılı kalır.",
+    "image": "/assets/portraits/cezeri.jpg",
+    "detailImage": "/assets/portraits/cezeri_fil_saati.jpg",
+    "detailCaption": "Tercüme-i Hiyel'de Yer Alan Fil Su Saati Minyatürü",
+    "tagOptions": [
+      { "id": "muhendislik", "label": "⚙️ Mühendislik & Robotik", "color": "#e11d48" },
+      { "id": "bilim", "label": "🔭 Uygulamalı Fizik", "color": "#d97706" }
+    ]
+  },
+  {
+    "id": "ibnularabi",
+    "name": "Muhyiddin İbnülarabi",
+    "title": "Şeyhü'l-Ekber & Düşünür",
+    "period": "1165-1240 • Konya/Şam",
+    "icon": "✨",
+    "primaryWork": "Füsûsu'l-Hikem",
+    "coreContribution": "Tasavvuf düşüncesini sistemleştirdi; bilgiyi 'hayat', cehaleti ise 'ölüm' sayarak ilmi yüceltti.",
+    "quote": "Câhil olduğunu bilen bir kez, bilmeyen ise iki kez câhildir.",
+    "image": "/assets/portraits/ibnularabi.jpg",
+    "tagOptions": [
+      { "id": "tasavvuf", "label": "🌿 İrfan & Düşünce", "color": "#059669" },
+      { "id": "felsefe", "label": "💡 Bilgelik & İlim", "color": "#7c3aed" }
+    ]
+  },
+  {
+    "id": "mevlana",
+    "name": "Mevlana Celaleddin Rumi",
+    "title": "Evrensel Sevgi & Hoşgörü",
+    "period": "1207-1273 • Konya",
+    "icon": "🕊️",
+    "primaryWork": "Mesnevi",
+    "coreContribution": "Evrensel hoşgörü ve sevgi felsefesiyle tüm insanlığı kucakladı (UNESCO Hoşgörü Yılı).",
+    "quote": "Biz pergel gibiyiz; bir ayağımız dinde, diğeri yetmiş iki milleti dolaşır.",
+    "image": "/assets/portraits/mevlana.jpg",
+    "tagOptions": [
+      { "id": "tasavvuf", "label": "🌿 Evrensel Hoşgörü", "color": "#059669" },
+      { "id": "dil", "label": "📖 Mesnevi & Edebiyat", "color": "#2563eb" }
+    ]
+  },
+  {
+    "id": "hacibektas",
+    "name": "Hacı Bektaş Veli",
+    "title": "Gönüller Sultanı & Birlik Piri",
+    "period": "1209-1271 • Nevşehir",
+    "icon": "🕯️",
+    "primaryWork": "Makâlât",
+    "coreContribution": "'İlimden gidilmeyen yolun sonu karanlıktır' diyerek Anadolu'da barış, ahlak ve kardeşliği sağladı.",
+    "quote": "Hırslar kinler yok olur aşkla meydanımızda; arslanlar ceylanlar dosttur kucağımızda.",
+    "image": "/assets/portraits/hacibektas.jpg",
+    "tagOptions": [
+      { "id": "tasavvuf", "label": "🌿 Ahlak & Barış", "color": "#059669" },
+      { "id": "toplum", "label": "🤝 Birlik & Dayanışma", "color": "#b45309" }
+    ]
+  },
+  {
+    "id": "yunusemre",
+    "name": "Yunus Emre",
+    "title": "Duru Türkçe & Sevgi Ozanı",
+    "period": "1241-1321 • Anadolu",
+    "icon": "🌱",
+    "primaryWork": "Risâletü'n-Nushiyye & Divan",
+    "coreContribution": "Arı bir halk Türkçesiyle gönülleri fethetti; Türkçenin Anadolu'da edebi dil olmasını sağladı.",
+    "quote": "Sevelim sevilelim, dünya kimseye kalmaz.",
+    "image": "/assets/portraits/yunusemre.jpg",
+    "tagOptions": [
+      { "id": "dil", "label": "📖 Duru Türkçe Şiir", "color": "#2563eb" },
+      { "id": "tasavvuf", "label": "🌿 Sevgi & Gönül Yolu", "color": "#059669" }
+    ]
+  },
+  {
+    "id": "ibnibibi",
+    "name": "İbni Bibi",
+    "title": "Selçuklu Saray Tarihçisi",
+    "period": "XIII. Yüzyıl • Konya",
+    "icon": "📜",
+    "primaryWork": "el-Evâmirü'l-Alâiyye",
+    "coreContribution": "Selçuklu devlet yönetimini, ikta toprak sistemini, adalet teşkilatını ve kervan ticaretini belgeledi.",
+    "quote": "Adil sultan, soyulan tüccarın zararını kendi hazinesinden karşılamıştır.",
+    "image": "/assets/portraits/ibnibibi.jpg",
+    "detailImage": "/assets/portraits/ibnibibi_yazma.jpg",
+    "detailCaption": "el-Evâmirü'l-Alâiyye'nin Orijinal El Yazması Sayfası",
+    "tagOptions": [
+      { "id": "tarih", "label": "📜 Tarih & Devlet", "color": "#701a75" },
+      { "id": "toplum", "label": "🤝 Adalet & Ticaret", "color": "#b45309" }
+    ]
+  }
+]
