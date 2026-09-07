@@ -1,6 +1,5 @@
 import React from 'react';
 import { useCaravan } from '../state/CaravanContext';
-import { Volume2, VolumeX } from 'lucide-react';
 
 const scenes = [
   { id: 'S0', name: 'Giriş' },
@@ -16,8 +15,6 @@ export default function RouteProgress() {
   const {
     currentScene,
     goToScene,
-    soundMuted,
-    toggleSound,
     stationACompleted,
     stationBCompleted,
     stationCCompleted
@@ -98,21 +95,6 @@ export default function RouteProgress() {
             );
           })}
         </div>
-
-        {/* Sound Toggle */}
-        <button
-          onClick={toggleSound}
-          style={{
-            background: 'none',
-            border: 'none',
-            cursor: 'pointer',
-            padding: '0.3rem',
-            color: soundMuted ? '#ef4444' : '#10b981'
-          }}
-          title={soundMuted ? "Sesi Aç" : "Sesi Kapat"}
-        >
-          {soundMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
-        </button>
       </div>
     </header>
   );

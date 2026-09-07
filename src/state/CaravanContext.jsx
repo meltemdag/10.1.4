@@ -2,7 +2,6 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 import comparisonData from '../content/comparisonCards.json';
 import evidenceData from '../content/evidenceCards.json';
 import figuresData from '../content/figures.json';
-import { soundManager } from '../utils/audioEffects';
 
 const CaravanContext = createContext();
 
@@ -10,7 +9,6 @@ export function CaravanProvider({ children }) {
   // Navigation State
   const [currentScene, setCurrentScene] = useState('S0'); // S0, S1, S2, S3, S4, S5, S6
   const [studentName, setStudentName] = useState('');
-  const [soundMuted, setSoundMuted] = useState(false);
 
   // Modals for extensions S-A, S-B
   const [showChronology, setShowChronology] = useState(false);
@@ -62,7 +60,6 @@ export function CaravanProvider({ children }) {
 
   // Actions
   const goToScene = (sceneId) => {
-    soundManager.playCaravanStep();
     setCurrentScene(sceneId);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -72,18 +69,15 @@ export function CaravanProvider({ children }) {
     if (!card) return false;
 
     if (card.correctColumn === targetColumn) {
-      soundManager.playSuccess();
       setStationAPlacements(prev => ({ ...prev, [cardId]: targetColumn }));
       return true;
     } else {
-      soundManager.playError();
       setStationAWrongCount(c => c + 1);
       return false;
     }
   };
 
   const removeCardInStationA = (cardId) => {
-    soundManager.playClick();
     setStationAPlacements(prev => {
       const next = { ...prev };
       delete next[cardId];
@@ -98,12 +92,6 @@ export function CaravanProvider({ children }) {
     if (!judgment) return false;
 
     const isCorrect = judgment.correct;
-    if (isCorrect) {
-      soundManager.playSuccess();
-    } else {
-      soundManager.playError();
-    }
-
     setStationBJudgments(prev => {
       const filtered = prev.filter(p => p.evidenceId !== evidenceId);
       return [...filtered, { evidenceId, judgmentId, isCorrect, evidenceTitle: evidence.title, judgmentText: judgment.text }];
@@ -114,17 +102,11 @@ export function CaravanProvider({ children }) {
 
   const setRelationshipStationB = (answerId) => {
     const isCorrect = answerId === 'rel_yes';
-    if (isCorrect) {
-      soundManager.playSuccess();
-    } else {
-      soundManager.playError();
-    }
     setStationBRelationship(answerId);
     return isCorrect;
   };
 
   const tagFigureStationC = (figureId, tagId, tagLabel, tagColor) => {
-    soundManager.playSuccess();
     setStationCTags(prev => ({
       ...prev,
       [figureId]: {
@@ -136,7 +118,6 @@ export function CaravanProvider({ children }) {
   };
 
   const removeFigureTagStationC = (figureId) => {
-    soundManager.playClick();
     setStationCTags(prev => {
       const next = { ...prev };
       delete next[figureId];
@@ -144,13 +125,7 @@ export function CaravanProvider({ children }) {
     });
   };
 
-  const toggleSound = () => {
-    const newMute = soundManager.toggleMute();
-    setSoundMuted(newMute);
-  };
-
   const restartExperience = () => {
-    soundManager.playCaravanStep();
     setCurrentScene('S0');
     setStationAPlacements({});
     setStationACompleted(false);
@@ -170,8 +145,6 @@ export function CaravanProvider({ children }) {
         goToScene,
         studentName,
         setStudentName,
-        soundMuted,
-        toggleSound,
         showChronology,
         setShowChronology,
         showEducationComparison,
