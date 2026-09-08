@@ -109,7 +109,7 @@ export const CuratorModal: React.FC<CuratorModalProps> = ({
     if (selectedGuessId === scholar.id) {
       setGuessFeedback({
         type: 'success',
-        message: 'Tebrikler! Portredeki âlimin kimliğini başarıyla belirlediniz.'
+        message: 'Doğru! Portredeki âlimin kimliğini başarıyla belirlediniz.'
       });
       onUpdateState(scholar.id, { isNameGuessed: true });
       setTimeout(() => {
@@ -133,7 +133,7 @@ export const CuratorModal: React.FC<CuratorModalProps> = ({
       setHasCompletedLocal(true);
       setEvidenceFeedback({
         type: 'success',
-        message: 'Tebrikler! Değerlendirmeniz somut kanıtla başarıyla doğrulandı. "İnceleme Tamamlandı" butonuna basarak salona dönebilirsiniz.'
+        message: 'Doğru! Değerlendirmeniz somut kanıtla başarıyla doğrulandı. "İnceleme Tamamlandı" butonuna basarak salona dönebilirsiniz.'
       });
       onUpdateState(scholar.id, {
         isFullyEvaluated: true,
@@ -162,7 +162,7 @@ export const CuratorModal: React.FC<CuratorModalProps> = ({
         {/* Floating Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-20 w-8 h-8 flex items-center justify-center text-slate-400 hover:text-[#0f2933] hover:bg-[#e0f2f1] rounded-full transition-colors font-bold text-base leading-none shadow-xs"
+          className="absolute top-2.5 right-2.5 sm:top-3 sm:right-3.5 z-30 w-8 h-8 rounded-full bg-white hover:bg-rose-50 border border-slate-300 hover:border-rose-300 text-slate-700 hover:text-rose-600 flex items-center justify-center transition-all font-bold text-sm leading-none shadow-xs"
           title="Kapat"
         >
           ✕
@@ -435,13 +435,17 @@ export const CuratorModal: React.FC<CuratorModalProps> = ({
             {/* TAB 4: EVALUATION & ANATOLIA CONNECTION */}
             {activeTab === 'curator' && isGuessed && (
               <div className="space-y-6">
-                {/* Question 1: Prime contribution */}
-                <div className="space-y-2.5">
-                  <h4 className="text-base sm:text-lg font-serif font-bold text-black leading-snug px-0.5">
-                    1. {scholar.curatorQuestion}
-                  </h4>
+                {/* Question 1 Block */}
+                <div className="space-y-2">
+                  {/* Soru Kartı (Border kalınlaştırıldı) */}
+                  <div className="bg-white border-2 border-slate-300 rounded-xl p-3 sm:p-3.5 shadow-xs">
+                    <h4 className="text-sm sm:text-base font-serif font-bold text-slate-900 leading-snug">
+                      1. {scholar.curatorQuestion}
+                    </h4>
+                  </div>
 
-                  <div className="bg-white/80 border border-slate-200 rounded-2xl p-2 sm:p-2.5 shadow-xs space-y-1.5">
+                  {/* Options (ABCD kaldırıldı, direkt metinle başlar) */}
+                  <div className="space-y-1">
                     {shuffledCuratorOptions.map((opt, idx) => {
                       const isSelected = selectedCuratorOpt === idx;
                       const isCorrect = opt.isCorrect;
@@ -451,46 +455,44 @@ export const CuratorModal: React.FC<CuratorModalProps> = ({
                           onClick={() => {
                             setSelectedCuratorOpt(idx);
                           }}
-                          className={`group w-full py-2.5 px-3.5 text-left rounded-xl transition-all flex items-start gap-3 text-xs sm:text-sm border ${
+                          className={`group w-full py-2 px-3.5 text-left rounded-lg transition-all flex items-center justify-between gap-3 text-xs sm:text-sm ${
                             isSelected
                               ? isCorrect
-                                ? 'bg-emerald-50 border-2 border-emerald-500 text-emerald-950 font-semibold shadow-xs'
-                                : 'bg-rose-50 border-2 border-rose-400 text-rose-950 font-medium shadow-xs'
-                              : 'bg-white border border-slate-200 text-slate-800 hover:bg-[#f0fdfa] hover:border-[#0d9488]/50 hover:text-slate-950 shadow-2xs'
+                                ? 'bg-emerald-100/90 text-emerald-950 font-semibold shadow-2xs'
+                                : 'bg-rose-100/90 text-rose-950 font-semibold shadow-2xs'
+                              : 'bg-white/90 text-slate-800 hover:bg-[#f0fdfa] hover:text-slate-950 shadow-2xs'
                           }`}
                         >
-                          <span
-                            className={`w-5 h-5 rounded-full flex items-center justify-center font-serif text-[11px] font-bold shrink-0 transition-colors mt-0.5 ${
-                              isSelected
-                                ? isCorrect
-                                  ? 'bg-emerald-600 text-white shadow-xs'
-                                  : 'bg-rose-600 text-white shadow-xs'
-                                : 'bg-slate-100 border border-slate-300 text-slate-600 group-hover:bg-[#0d9488]/15 group-hover:text-[#0f766e]'
-                            }`}
-                          >
-                            {isSelected ? (isCorrect ? '✓' : '✕') : String.fromCharCode(65 + idx)}
-                          </span>
-                          <span className="leading-relaxed">{opt.text}</span>
+                          <span className="font-semibold leading-snug">{opt.text}</span>
+                          {isSelected && (
+                            <span
+                              className={`w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold shrink-0 ${
+                                isCorrect ? 'bg-emerald-600 text-white shadow-xs' : 'bg-rose-600 text-white shadow-xs'
+                              }`}
+                            >
+                              {isCorrect ? '✓' : '✕'}
+                            </span>
+                          )}
                         </button>
                       );
                     })}
                   </div>
 
-                  {/* Feedback for Question 1 */}
+                  {/* Feedback for Question 1 (Border var, kompakt) */}
                   <AnimatePresence>
                     {selectedCuratorOpt !== null && (
                       <motion.div
-                        initial={{ opacity: 0, y: -4 }}
+                        initial={{ opacity: 0, y: -3 }}
                         animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -4 }}
-                        className={`p-3 sm:p-3.5 rounded-xl border text-xs sm:text-sm leading-relaxed flex items-start space-x-2.5 shadow-xs ${
+                        exit={{ opacity: 0, y: -3 }}
+                        className={`mt-1.5 py-1.5 px-2.5 rounded-lg border text-[11px] sm:text-xs leading-snug flex items-start gap-2 shadow-2xs ${
                           shuffledCuratorOptions[selectedCuratorOpt]?.isCorrect
-                            ? 'bg-emerald-50 border-2 border-emerald-400 text-emerald-950'
-                            : 'bg-rose-50 border-2 border-rose-400 text-rose-950'
+                            ? 'bg-emerald-50/90 border border-emerald-300 text-emerald-950'
+                            : 'bg-rose-50/90 border border-rose-300 text-rose-950'
                         }`}
                       >
                         <span
-                          className={`w-5 h-5 rounded-full flex items-center justify-center font-bold text-xs shrink-0 mt-0.5 ${
+                          className={`w-3.5 h-3.5 rounded-full flex items-center justify-center font-bold text-[9px] shrink-0 mt-0.5 ${
                             shuffledCuratorOptions[selectedCuratorOpt]?.isCorrect
                               ? 'bg-emerald-200 text-emerald-800'
                               : 'bg-rose-200 text-rose-800'
@@ -498,23 +500,25 @@ export const CuratorModal: React.FC<CuratorModalProps> = ({
                         >
                           {shuffledCuratorOptions[selectedCuratorOpt]?.isCorrect ? '✓' : '!'}
                         </span>
-                        <div>
-                          <p className="font-medium">
-                            {shuffledCuratorOptions[selectedCuratorOpt]?.feedback}
-                          </p>
-                        </div>
+                        <p className="font-medium pt-0.5">
+                          {shuffledCuratorOptions[selectedCuratorOpt]?.feedback}
+                        </p>
                       </motion.div>
                     )}
                   </AnimatePresence>
                 </div>
 
-                {/* Question 2: Anatolia Connection */}
-                <div className="space-y-2.5 pt-3">
-                  <h4 className="text-base sm:text-lg font-serif font-bold text-black leading-snug px-0.5">
-                    2. {scholar.anatoliaQuestion}
-                  </h4>
+                {/* Question 2 Block */}
+                <div className="space-y-2 pt-2">
+                  {/* Soru Kartı (Border kalınlaştırıldı) */}
+                  <div className="bg-white border-2 border-slate-300 rounded-xl p-3 sm:p-3.5 shadow-xs">
+                    <h4 className="text-sm sm:text-base font-serif font-bold text-slate-900 leading-snug">
+                      2. {scholar.anatoliaQuestion}
+                    </h4>
+                  </div>
 
-                  <div className="bg-white/85 border border-slate-200 rounded-2xl p-2 sm:p-2.5 shadow-xs space-y-1.5">
+                  {/* Options (ABCD kaldırıldı, direkt metinle başlar) */}
+                  <div className="space-y-1">
                     {shuffledAnatoliaOptions.map((opt, idx) => {
                       const isSelected = selectedAnatoliaOpt === idx;
                       const isCorrect = opt.isCorrect;
@@ -524,46 +528,44 @@ export const CuratorModal: React.FC<CuratorModalProps> = ({
                           onClick={() => {
                             setSelectedAnatoliaOpt(idx);
                           }}
-                          className={`group w-full py-2.5 px-3.5 text-left rounded-xl transition-all flex items-start gap-3 text-xs sm:text-sm border ${
+                          className={`group w-full py-2 px-3.5 text-left rounded-lg transition-all flex items-center justify-between gap-3 text-xs sm:text-sm ${
                             isSelected
                               ? isCorrect
-                                ? 'bg-emerald-50 border-2 border-emerald-500 text-emerald-950 font-semibold shadow-xs'
-                                : 'bg-rose-50 border-2 border-rose-400 text-rose-950 font-medium shadow-xs'
-                              : 'bg-white border border-slate-200 text-slate-800 hover:bg-[#f0fdfa] hover:border-[#0d9488]/50 hover:text-slate-950 shadow-2xs'
+                                ? 'bg-emerald-100/90 text-emerald-950 font-semibold shadow-2xs'
+                                : 'bg-rose-100/90 text-rose-950 font-semibold shadow-2xs'
+                              : 'bg-white/90 text-slate-800 hover:bg-[#f0fdfa] hover:text-slate-950 shadow-2xs'
                           }`}
                         >
-                          <span
-                            className={`w-5 h-5 rounded-full flex items-center justify-center font-serif text-[11px] font-bold shrink-0 transition-colors mt-0.5 ${
-                              isSelected
-                                ? isCorrect
-                                  ? 'bg-emerald-600 text-white shadow-xs'
-                                  : 'bg-rose-600 text-white shadow-xs'
-                                : 'bg-slate-100 border border-slate-300 text-slate-600 group-hover:bg-[#0d9488]/15 group-hover:text-[#0f766e]'
-                            }`}
-                          >
-                            {isSelected ? (isCorrect ? '✓' : '✕') : String.fromCharCode(65 + idx)}
-                          </span>
-                          <span className="leading-relaxed">{opt.text}</span>
+                          <span className="font-semibold leading-snug">{opt.text}</span>
+                          {isSelected && (
+                            <span
+                              className={`w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold shrink-0 ${
+                                isCorrect ? 'bg-emerald-600 text-white shadow-xs' : 'bg-rose-600 text-white shadow-xs'
+                              }`}
+                            >
+                              {isCorrect ? '✓' : '✕'}
+                            </span>
+                          )}
                         </button>
                       );
                     })}
                   </div>
 
-                  {/* Feedback for Question 2 */}
+                  {/* Feedback for Question 2 (Border var, kompakt) */}
                   <AnimatePresence>
                     {selectedAnatoliaOpt !== null && (
                       <motion.div
-                        initial={{ opacity: 0, y: -4 }}
+                        initial={{ opacity: 0, y: -3 }}
                         animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -4 }}
-                        className={`p-3 sm:p-3.5 rounded-xl border text-xs sm:text-sm leading-relaxed flex items-start space-x-2.5 shadow-xs ${
+                        exit={{ opacity: 0, y: -3 }}
+                        className={`mt-1.5 py-1.5 px-2.5 rounded-lg border text-[11px] sm:text-xs leading-snug flex items-start gap-2 shadow-2xs ${
                           shuffledAnatoliaOptions[selectedAnatoliaOpt]?.isCorrect
-                            ? 'bg-emerald-50 border-2 border-emerald-400 text-emerald-950'
-                            : 'bg-rose-50 border-2 border-rose-400 text-rose-950'
+                            ? 'bg-emerald-50/90 border border-emerald-300 text-emerald-950'
+                            : 'bg-rose-50/90 border border-rose-300 text-rose-950'
                         }`}
                       >
                         <span
-                          className={`w-5 h-5 rounded-full flex items-center justify-center font-bold text-xs shrink-0 mt-0.5 ${
+                          className={`w-3.5 h-3.5 rounded-full flex items-center justify-center font-bold text-[9px] shrink-0 mt-0.5 ${
                             shuffledAnatoliaOptions[selectedAnatoliaOpt]?.isCorrect
                               ? 'bg-emerald-200 text-emerald-800'
                               : 'bg-rose-200 text-rose-800'
@@ -571,11 +573,9 @@ export const CuratorModal: React.FC<CuratorModalProps> = ({
                         >
                           {shuffledAnatoliaOptions[selectedAnatoliaOpt]?.isCorrect ? '✓' : '!'}
                         </span>
-                        <div>
-                          <p className="font-medium">
-                            {shuffledAnatoliaOptions[selectedAnatoliaOpt]?.feedback}
-                          </p>
-                        </div>
+                        <p className="font-medium pt-0.5">
+                          {shuffledAnatoliaOptions[selectedAnatoliaOpt]?.feedback}
+                        </p>
                       </motion.div>
                     )}
                   </AnimatePresence>
@@ -625,86 +625,88 @@ export const CuratorModal: React.FC<CuratorModalProps> = ({
 
             {/* TAB 5: EVIDENCE ("KANITINI GÖSTER") */}
             {activeTab === 'evidence' && isGuessed && (
-              <div className="space-y-3">
-                <h4 className="text-base sm:text-lg font-serif font-bold text-black leading-snug px-0.5">
-                  {scholar.evidenceQuestion}
-                </h4>
+              <div className="space-y-4">
+                {/* Question 3 Block */}
+                <div className="space-y-2">
+                  {/* Soru Kartı (Border kalınlaştırıldı) */}
+                  <div className="bg-white border-2 border-slate-300 rounded-xl p-3 sm:p-3.5 shadow-xs">
+                    <h4 className="text-sm sm:text-base font-serif font-bold text-slate-900 leading-snug">
+                      {scholar.evidenceQuestion}
+                    </h4>
+                  </div>
 
-                {/* Evidence options in thin card container */}
-                <div className="bg-white/80 border border-slate-200 rounded-2xl p-2 sm:p-2.5 shadow-xs space-y-1.5">
-                  {shuffledEvidenceOptions.map((opt, idx) => {
-                    const isSelected = selectedEvidenceOpt === idx;
-                    return (
-                      <button
-                        key={idx}
-                        disabled={isComplete}
-                        onClick={() => {
-                          setSelectedEvidenceOpt(idx);
-                          if (opt.isCorrect) {
-                            setEvidenceFeedback({
-                              type: 'success',
-                              message: 'Tebrikler! Değerlendirmenizi somut bir kanıtla desteklediniz. İncelemeyi onaylamak için "Kanıtı Doğrula ve Değerlendir" butonuna basınız.'
-                            });
-                          } else {
-                            setEvidenceFeedback({
-                              type: 'error',
-                              message: opt.explanation || 'Bu seçenek çıkarımınızı desteklememektedir. İlgili âlimin birincil kaynak niteliğindeki eserlerini ve kayıtlarını inceleyiniz.'
-                            });
-                          }
-                        }}
-                        className={`group w-full py-2.5 px-3.5 text-left rounded-xl transition-all flex items-start gap-3 text-xs sm:text-sm border ${
-                          isSelected
-                            ? opt.isCorrect
-                              ? 'bg-emerald-50 border-2 border-emerald-500 text-emerald-950 font-semibold shadow-xs'
-                              : 'bg-rose-50 border-2 border-rose-400 text-rose-950 font-medium shadow-xs'
-                            : 'bg-white border border-slate-200 text-slate-800 hover:bg-[#f0fdfa] hover:border-[#0d9488]/50 hover:text-slate-950 shadow-2xs'
+                  {/* Evidence options (ABCD kaldırıldı, direkt metinle başlar) */}
+                  <div className="space-y-1">
+                    {shuffledEvidenceOptions.map((opt, idx) => {
+                      const isSelected = selectedEvidenceOpt === idx;
+                      return (
+                        <button
+                          key={idx}
+                          disabled={isComplete}
+                          onClick={() => {
+                            setSelectedEvidenceOpt(idx);
+                            if (opt.isCorrect) {
+                              setEvidenceFeedback({
+                                type: 'success',
+                                message: 'Doğru! Değerlendirmenizi somut bir kanıtla desteklediniz. İncelemeyi onaylamak için "Kanıtı Doğrula ve Değerlendir" butonuna basınız.'
+                              });
+                            } else {
+                              setEvidenceFeedback({
+                                type: 'error',
+                                message: opt.explanation || 'Bu seçenek çıkarımınızı desteklememektedir. İlgili âlimin birincil kaynak niteliğindeki eserlerini ve kayıtlarını inceleyiniz.'
+                              });
+                            }
+                          }}
+                          className={`group w-full py-2 px-3.5 text-left rounded-lg transition-all flex items-center justify-between gap-3 text-xs sm:text-sm ${
+                            isSelected
+                              ? opt.isCorrect
+                                ? 'bg-emerald-100/90 text-emerald-950 font-semibold shadow-2xs'
+                                : 'bg-rose-100/90 text-rose-950 font-semibold shadow-2xs'
+                              : 'bg-white/90 text-slate-800 hover:bg-[#f0fdfa] hover:text-slate-950 shadow-2xs'
+                          }`}
+                        >
+                          <span className="font-semibold leading-snug">{opt.text}</span>
+                          {isSelected && (
+                            <span
+                              className={`w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold shrink-0 ${
+                                opt.isCorrect ? 'bg-emerald-600 text-white shadow-xs' : 'bg-rose-600 text-white shadow-xs'
+                              }`}
+                            >
+                              {opt.isCorrect ? '✓' : '✕'}
+                            </span>
+                          )}
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  {/* Feedback (Border var, kompakt) */}
+                  <AnimatePresence>
+                    {evidenceFeedback && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -3 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -3 }}
+                        className={`mt-1.5 py-1.5 px-2.5 rounded-lg border text-[11px] sm:text-xs leading-snug flex items-start gap-2 shadow-2xs ${
+                          evidenceFeedback.type === 'success'
+                            ? 'bg-emerald-50/90 border border-emerald-300 text-emerald-950'
+                            : 'bg-rose-50/90 border border-rose-300 text-rose-950'
                         }`}
                       >
                         <span
-                          className={`w-5 h-5 rounded-full flex items-center justify-center font-serif text-[11px] font-bold shrink-0 transition-colors mt-0.5 ${
-                            isSelected
-                              ? opt.isCorrect
-                                ? 'bg-emerald-600 text-white shadow-xs'
-                                : 'bg-rose-600 text-white shadow-xs'
-                              : 'bg-slate-100 border border-slate-300 text-slate-600 group-hover:bg-[#0d9488]/15 group-hover:text-[#0f766e]'
+                          className={`w-3.5 h-3.5 rounded-full flex items-center justify-center font-bold text-[9px] shrink-0 mt-0.5 ${
+                            evidenceFeedback.type === 'success'
+                              ? 'bg-emerald-200 text-emerald-800'
+                              : 'bg-rose-200 text-rose-800'
                           }`}
                         >
-                          {isSelected ? (opt.isCorrect ? '✓' : '✕') : String.fromCharCode(65 + idx)}
+                          {evidenceFeedback.type === 'success' ? '✓' : '!'}
                         </span>
-                        <span className="leading-relaxed">{opt.text}</span>
-                      </button>
-                    );
-                  })}
+                        <p className="font-medium pt-0.5">{evidenceFeedback.message}</p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
-
-                {/* Feedback */}
-                <AnimatePresence>
-                  {evidenceFeedback && (
-                    <motion.div
-                      initial={{ opacity: 0, y: -4 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -4 }}
-                      className={`p-3.5 rounded-xl border text-xs sm:text-sm leading-relaxed flex items-start space-x-2.5 shadow-xs ${
-                        evidenceFeedback.type === 'success'
-                          ? 'bg-emerald-50 border-2 border-emerald-400 text-emerald-950'
-                          : 'bg-rose-50 border-2 border-rose-400 text-rose-950'
-                      }`}
-                    >
-                      <span
-                        className={`w-5 h-5 rounded-full flex items-center justify-center font-bold text-xs shrink-0 mt-0.5 ${
-                          evidenceFeedback.type === 'success'
-                            ? 'bg-emerald-200 text-emerald-800'
-                            : 'bg-rose-200 text-rose-800'
-                        }`}
-                      >
-                        {evidenceFeedback.type === 'success' ? '✓' : '!'}
-                      </span>
-                      <div>
-                        <p className="font-medium">{evidenceFeedback.message}</p>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
 
                 {/* Evidence verification and complete buttons */}
                 <div className="flex items-center justify-between pt-2">

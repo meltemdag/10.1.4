@@ -216,7 +216,7 @@ export default function App() {
 
               <div className="p-4 sm:p-5 rounded-2xl bg-[#f0fdfa] border-2 border-[#0d9488]/30 shadow-inner my-4">
                 <p className="font-serif text-sm sm:text-base text-[#134e4a] leading-relaxed">
-                  Portre alanında yer alan 9 portreyi sırasıyla inceleyiniz. İpuçlarından hareketle âlimin kimliğini belirleyiniz; bilgi kartlarını okuyup değerlendirme sorularını ve somut kanıtları yanıtlayarak incelemenizi tamamlayınız. Tüm incelemeleri bitirdiğinizde açılacak olan kapanış görevini yerine getiriniz.
+                  Aşağıda verilen portreleri sırasıyla inceleyiniz. İpuçlarından hareketle âlimin kimliğini belirleyiniz; bilgi kartlarını okuyup değerlendirme sorularını ve somut kanıtları yanıtlayarak incelemenizi tamamlayınız. Tüm incelemeleri bitirdiğinizde açılacak olan kapanış görevini yerine getiriniz.
                 </p>
               </div>
 

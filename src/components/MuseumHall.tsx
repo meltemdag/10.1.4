@@ -138,7 +138,7 @@ export const MuseumHall: React.FC<MuseumHallProps> = ({
       <div className="relative z-10 px-4 pt-3 pb-1 max-w-4xl mx-auto w-full">
         <div className="bg-white/90 border border-[#0d9488]/30 rounded-2xl px-4 py-2.5 sm:px-6 shadow-xs text-center backdrop-blur-xs">
           <p className="text-xs sm:text-sm text-[#0f2933] font-serif leading-relaxed">
-            Portre alanında yer alan 9 portreyi sırasıyla inceleyiniz. İpuçlarından hareketle âlimin kimliğini belirleyiniz; bilgi kartlarını okuyup değerlendirme sorularını ve somut kanıtları yanıtlayarak incelemenizi tamamlayınız.
+            Aşağıda verilen portreleri sırasıyla inceleyiniz. İpuçlarından hareketle âlimin kimliğini belirleyiniz; bilgi kartlarını okuyup değerlendirme sorularını ve somut kanıtları yanıtlayarak incelemenizi tamamlayınız.
           </p>
         </div>
       </div>
