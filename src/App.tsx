@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { ScholarData, DiscoveredScholarState, FinalCuratorSubmission } from './types';
 import { SCHOLARS_DATA } from './data/scholarsData';
@@ -14,39 +14,59 @@ import { CompletionModal } from './components/CompletionModal';
 const STORAGE_KEY_STATE = 't_islamic_museum_state_v1';
 const STORAGE_KEY_SUBMISSION = 't_islamic_museum_submission_v1';
 
-// Safe SCORM completion trigger (Rule 6 compliant, no console logs)
+// SCORM tamamlama bildirimi (Rule 6 compliant: sessiz, konsola log basılmaz)
 const triggerScormCompletion = () => {
   try {
     const win = window as any;
+    // 1. MEBİ Bütünleşik SCORM Servisi (v3.0)
+    if (win.SCORM) {
+      if (typeof win.SCORM.complete === 'function') {
+        win.SCORM.complete(true);
+      }
+      if (typeof win.SCORM.setStatus === 'function') {
+        win.SCORM.setStatus('completed');
+      }
+      if (typeof win.SCORM.sendScore === 'function') {
+        win.SCORM.sendScore(9, 9, true);
+      }
+    }
+
+    // 2. Standart LMS API doğrudan kontrolü (Yedek Kanal)
     const api =
       win.pipwerks?.SCORM ||
-      win.SCORM ||
+      win.API_1484_11 ||
       win.API ||
+      win.parent?.API_1484_11 ||
       win.parent?.API ||
       win.parent?.pipwerks?.SCORM;
+
     if (api) {
       if (typeof api.set === 'function') {
         api.set('cmi.core.lesson_status', 'completed');
         api.set('cmi.completion_status', 'completed');
         api.save();
+      } else if (typeof api.SetValue === 'function') {
+        api.SetValue('cmi.completion_status', 'completed');
+        api.SetValue('cmi.success_status', 'passed');
+        api.Commit('');
       } else if (typeof api.LMSSetValue === 'function') {
         api.LMSSetValue('cmi.core.lesson_status', 'completed');
         api.LMSCommit('');
       }
     }
   } catch {
-    // Ignore cross-origin or missing API
+    // Sessiz çalışma
   }
 };
 
-// Helper to create initial completed museum state for inspecting the completion screen
+// Helper to create initial clean museum state
 const createInitialScholarsState = (): Record<string, DiscoveredScholarState> => {
   const initial: Record<string, DiscoveredScholarState> = {};
   SCHOLARS_DATA.forEach((scholar) => {
     initial[scholar.id] = {
-      isNameGuessed: true,
-      unlockedClues: [scholar.clue1.id, scholar.clue2.id, scholar.clue3.id],
-      isFullyEvaluated: true
+      isNameGuessed: false,
+      unlockedClues: [],
+      isFullyEvaluated: false
     };
   });
   return initial;
@@ -58,7 +78,7 @@ export default function App() {
     return shuffleArray(SCHOLARS_DATA);
   });
 
-  // Main collection state - initial state configured to show all completed
+  // Main collection state
   const [scholarsState, setScholarsState] = useState<Record<string, DiscoveredScholarState>>(() => {
     return createInitialScholarsState();
   });
@@ -66,13 +86,13 @@ export default function App() {
   // Final Curator Mission Submission - starts clean on reload
   const [submission, setSubmission] = useState<FinalCuratorSubmission | null>(null);
 
-  // Entrance and termination screen states (isStarted: true, showCompletionModal: true to immediately review)
-  const [isStarted, setIsStarted] = useState<boolean>(true);
+  // Entrance and termination screen states
+  const [isStarted, setIsStarted] = useState<boolean>(false);
   const [isTerminated, setIsTerminated] = useState<boolean>(false);
 
   // Modals
   const [selectedScholar, setSelectedScholar] = useState<ScholarData | null>(null);
-  const [showCompletionModal, setShowCompletionModal] = useState<boolean>(true);
+  const [showCompletionModal, setShowCompletionModal] = useState<boolean>(false);
   const [showFinalMission, setShowFinalMission] = useState<boolean>(false);
   const [showReport, setShowReport] = useState<boolean>(false);
 
@@ -80,6 +100,38 @@ export default function App() {
   const allEvaluated = SCHOLARS_DATA.every(
     (scholar) => scholarsState[scholar.id]?.isFullyEvaluated
   );
+
+  // SCORM Yaşam Döngüsü: Başlatma, varsayılan tamamlandı durumu ve kapanış yönetimi
+  useEffect(() => {
+    try {
+      const win = window as any;
+      if (win.SCORM && typeof win.SCORM.initialize === 'function') {
+        win.SCORM.initialize();
+        if (typeof win.SCORM.setStatus === 'function') {
+          win.SCORM.setStatus('completed');
+        }
+      }
+    } catch {
+      // Sessiz çalışma
+    }
+
+    const handleBeforeUnload = () => {
+      try {
+        const win = window as any;
+        if (win.SCORM && typeof win.SCORM.terminate === 'function') {
+          win.SCORM.terminate();
+        }
+      } catch {
+        // Sessiz çalışma
+      }
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+      handleBeforeUnload();
+    };
+  }, []);
 
   // Partial updates helper
   const handleUpdateScholarState = (scholarId: string, updates: Partial<DiscoveredScholarState>) => {
@@ -228,7 +280,10 @@ export default function App() {
                   onClose={() => setSelectedScholar(null)}
                   onUpdateState={handleUpdateScholarState}
                   onOpenNext={handleOpenNextScholar}
-                  onFinishAllScholars={() => setShowCompletionModal(true)}
+                  onFinishAllScholars={() => {
+                    triggerScormCompletion();
+                    setShowCompletionModal(true);
+                  }}
                 />
               )}
             </AnimatePresence>

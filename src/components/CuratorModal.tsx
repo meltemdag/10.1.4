@@ -153,14 +153,18 @@ export const CuratorModal: React.FC<CuratorModalProps> = ({
     }
   };
 
-  // Check if all 9 scholars are complete once this scholar is evaluated
-  const isAllCompletedNow = SCHOLARS_DATA.every((s) => {
+  // Check if all other 8 scholars are fully evaluated
+  const isAllOtherScholarsCompleted = SCHOLARS_DATA.every((s) => {
     if (s.id === scholar.id) return true;
     return allScholarsState[s.id]?.isFullyEvaluated;
   });
 
   const handleCompleteInspection = () => {
-    if (selectedEvidenceOpt !== null && shuffledEvidenceOptions[selectedEvidenceOpt]?.isCorrect) {
+    const isThisScholarValid =
+      isFullyEvaluated ||
+      (selectedEvidenceOpt !== null && Boolean(shuffledEvidenceOptions[selectedEvidenceOpt]?.isCorrect));
+
+    if (!isFullyEvaluated && selectedEvidenceOpt !== null && shuffledEvidenceOptions[selectedEvidenceOpt]?.isCorrect) {
       onUpdateState(scholar.id, {
         isFullyEvaluated: true,
         curatorAnswerIndex: selectedCuratorOpt ?? undefined,
@@ -169,9 +173,14 @@ export const CuratorModal: React.FC<CuratorModalProps> = ({
         evaluatedAt: new Date().toISOString()
       });
     }
+
     onClose();
-    if (isAllCompletedNow && onFinishAllScholars) {
-      onFinishAllScholars();
+
+    // Kilitleme mantığı: YALNIZCA tüm 9 portre incelenmişse ve İncelemeyi Tamamla tıklandığında açılır
+    if (isThisScholarValid && isAllOtherScholarsCompleted && onFinishAllScholars) {
+      setTimeout(() => {
+        onFinishAllScholars();
+      }, 350);
     }
   };
 
