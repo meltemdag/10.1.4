@@ -9,6 +9,7 @@ interface MuseumHallProps {
   scholarsState: Record<string, DiscoveredScholarState>;
   onSelectScholar: (scholar: ScholarData) => void;
   onOpenFinalMission: () => void;
+  onOpenCompletion?: () => void;
   allCompleted: boolean;
 }
 
@@ -17,6 +18,7 @@ export const MuseumHall: React.FC<MuseumHallProps> = ({
   scholarsState,
   onSelectScholar,
   onOpenFinalMission,
+  onOpenCompletion,
   allCompleted
 }) => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);

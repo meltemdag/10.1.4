@@ -6,6 +6,7 @@ interface MuseumHeaderProps {
   scholarsState: Record<string, DiscoveredScholarState>;
   onOpenFinalMission: () => void;
   onOpenReport?: () => void;
+  onOpenCompletion?: () => void;
   hasFinalSubmission: boolean;
 }
 
@@ -13,6 +14,7 @@ export const MuseumHeader: React.FC<MuseumHeaderProps> = ({
   scholarsState,
   onOpenFinalMission,
   onOpenReport,
+  onOpenCompletion,
   hasFinalSubmission
 }) => {
   // Count evaluated & guessed
@@ -49,12 +51,12 @@ export const MuseumHeader: React.FC<MuseumHeaderProps> = ({
                 </button>
               )}
 
-              {isAllEvaluated && !hasFinalSubmission && (
+              {isAllEvaluated && onOpenCompletion && (
                 <button
-                  onClick={onOpenFinalMission}
-                  className="px-3.5 py-1.5 bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] hover:from-[#fef08a] hover:to-[#fbbf24] text-[#0f2933] text-xs font-serif font-bold rounded-xl border border-[#fef08a] shadow-md transition-all hover:scale-105"
+                  onClick={onOpenCompletion}
+                  className="px-3.5 py-1.5 bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] hover:from-[#fef08a] hover:to-[#fbbf24] text-[#0f2933] text-xs font-serif font-bold rounded-xl border border-[#fef08a] shadow-md transition-all hover:scale-105 cursor-pointer"
                 >
-                  <span>Kapanış Görevi</span>
+                  <span>Etkinliği Tamamla</span>
                 </button>
               )}
             </div>

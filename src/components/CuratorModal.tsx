@@ -12,14 +12,17 @@ interface CuratorModalProps {
   onClose: () => void;
   onUpdateState: (scholarId: string, updates: Partial<DiscoveredScholarState>) => void;
   onOpenNext?: () => void;
+  onFinishAllScholars?: () => void;
 }
 
 export const CuratorModal: React.FC<CuratorModalProps> = ({
   scholar,
   scholarState,
+  allScholarsState,
   onClose,
   onUpdateState,
-  onOpenNext
+  onOpenNext,
+  onFinishAllScholars
 }) => {
   // Local stage management: 'clues' | 'guessing' | 'revealed' | 'curator_eval' | 'evidence' | 'completed'
   const isGuessed = scholarState.isNameGuessed;
@@ -133,7 +136,7 @@ export const CuratorModal: React.FC<CuratorModalProps> = ({
       setHasCompletedLocal(true);
       setEvidenceFeedback({
         type: 'success',
-        message: 'Doğru! Değerlendirmeniz somut kanıtla başarıyla doğrulandı. "İnceleme Tamamlandı" butonuna basarak salona dönebilirsiniz.'
+        message: 'Doğru! Değerlendirmeniz somut kanıtla başarıyla doğrulandı. "İncelemeyi Tamamla" butonuna basabilirsiniz.'
       });
       onUpdateState(scholar.id, {
         isFullyEvaluated: true,
@@ -147,6 +150,19 @@ export const CuratorModal: React.FC<CuratorModalProps> = ({
         type: 'error',
         message: opt?.explanation || 'Bu seçenek çıkarımınızı desteklememektedir. İlgili âlimin birincil kaynak niteliğindeki eserlerini ve kayıtlarını inceleyiniz.'
       });
+    }
+  };
+
+  // Check if all 9 scholars are complete once this scholar is evaluated
+  const isAllCompletedNow = SCHOLARS_DATA.every((s) => {
+    if (s.id === scholar.id) return true;
+    return allScholarsState[s.id]?.isFullyEvaluated;
+  });
+
+  const handleCompleteInspection = () => {
+    onClose();
+    if (isAllCompletedNow && onFinishAllScholars) {
+      onFinishAllScholars();
     }
   };
 
@@ -648,7 +664,7 @@ export const CuratorModal: React.FC<CuratorModalProps> = ({
                             if (opt.isCorrect) {
                               setEvidenceFeedback({
                                 type: 'success',
-                                message: 'Doğru! Değerlendirmenizi somut bir kanıtla desteklediniz. İncelemeyi onaylamak için "Kanıtı Doğrula ve Değerlendir" butonuna basınız.'
+                                message: 'Doğru! Değerlendirmenizi somut bir kanıtla desteklediniz. İncelemeyi onaylamak için "İncelemeyi Tamamla" butonuna basınız.'
                               });
                             } else {
                               setEvidenceFeedback({
@@ -728,10 +744,10 @@ export const CuratorModal: React.FC<CuratorModalProps> = ({
                       </button>
                     ) : (
                       <button
-                        onClick={onClose}
-                        className="px-7 py-2.5 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 text-white font-serif font-bold text-sm rounded-xl shadow-lg transition-all shadow-emerald-700/20"
+                        onClick={handleCompleteInspection}
+                        className="px-7 py-2.5 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 text-white font-serif font-bold text-sm rounded-xl shadow-lg transition-all shadow-emerald-700/20 cursor-pointer"
                       >
-                        İnceleme Tamamlandı
+                        İncelemeyi Tamamla
                       </button>
                     )}
                   </div>
