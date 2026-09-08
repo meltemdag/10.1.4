@@ -125,13 +125,13 @@ export const MuseumHall: React.FC<MuseumHallProps> = ({
           })}
         </div>
 
-        {/* Right: Final Mission Call to Action Button */}
+        {/* Right: Final Completion Call to Action Button */}
         {allCompleted && (
           <button
-            onClick={onOpenFinalMission}
-            className="sm:absolute sm:right-6 px-3.5 py-1.5 bg-gradient-to-r from-[#0d9488] to-[#0284c7] text-white font-serif font-bold text-xs rounded-lg shadow-md border border-teal-300/40 animate-pulse hover:animate-none"
+            onClick={onOpenCompletion || onOpenFinalMission}
+            className="sm:absolute sm:right-6 px-3.5 py-1.5 bg-gradient-to-r from-[#0d9488] to-[#0284c7] text-white font-serif font-bold text-xs rounded-lg shadow-md border border-teal-300/40 animate-pulse hover:animate-none cursor-pointer"
           >
-            <span>Kapanış Görevi Açıldı!</span>
+            <span>Etkinliği Tamamladınız!</span>
           </button>
         )}
       </div>

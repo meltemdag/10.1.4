@@ -53,21 +53,14 @@ export const CompletionModal: React.FC<CompletionModalProps> = ({
         </button>
 
         {/* Title */}
-        <div className="pt-2 sm:pt-3">
+        <div className="pt-4 sm:pt-6 pb-2">
           <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#0f2933] tracking-wide leading-tight">
-            Tebrikler, Etkinliği Tamamladınız!
+            Etkinliği Tamamladınız!
           </h2>
         </div>
 
-        {/* Description Box */}
-        <div className="mt-5 p-4 sm:p-5 rounded-2xl bg-[#f0fdfa] border border-[#0d9488]/30 shadow-inner">
-          <p className="font-serif text-sm sm:text-base text-[#134e4a] leading-relaxed">
-            Türkistan’dan Anadolu’ya uzanan süreçte medeniyet öncüsü âlim ve mutasavvıflarımızı başarıyla incelediniz; onların insanlığa ve medeniyetimize sunduğu katkıları keşfederek tüm değerlendirmeleri tamamladınız.
-          </p>
-        </div>
-
         {/* Action Buttons: Etkinliği Yeniden Başlat & Etkinliği Bitir */}
-        <div className="mt-7 flex flex-col sm:flex-row items-center justify-center gap-3">
+        <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-3.5">
           <button
             onClick={onRestart}
             className="w-full sm:w-1/2 py-3 px-4 bg-white hover:bg-[#f0fdfa] text-[#0f766e] hover:text-[#115e59] border-2 border-[#0d9488] font-serif font-bold text-sm rounded-xl shadow-xs transition-all hover:scale-[1.02] active:scale-95 cursor-pointer"
