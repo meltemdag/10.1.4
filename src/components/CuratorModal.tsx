@@ -136,7 +136,7 @@ export const CuratorModal: React.FC<CuratorModalProps> = ({
       setHasCompletedLocal(true);
       setEvidenceFeedback({
         type: 'success',
-        message: 'Doğru! Değerlendirmeniz somut kanıtla başarıyla doğrulandı. "İncelemeyi Tamamla" butonuna basabilirsiniz.'
+        message: 'Doğru! Değerlendirmeniz somut kanıtla başarıyla doğrulandı.'
       });
       onUpdateState(scholar.id, {
         isFullyEvaluated: true,
@@ -160,6 +160,15 @@ export const CuratorModal: React.FC<CuratorModalProps> = ({
   });
 
   const handleCompleteInspection = () => {
+    if (selectedEvidenceOpt !== null && shuffledEvidenceOptions[selectedEvidenceOpt]?.isCorrect) {
+      onUpdateState(scholar.id, {
+        isFullyEvaluated: true,
+        curatorAnswerIndex: selectedCuratorOpt ?? undefined,
+        anatoliaAnswerIndex: selectedAnatoliaOpt ?? undefined,
+        evidenceAnswerIndex: selectedEvidenceOpt,
+        evaluatedAt: new Date().toISOString()
+      });
+    }
     onClose();
     if (isAllCompletedNow && onFinishAllScholars) {
       onFinishAllScholars();
@@ -662,9 +671,17 @@ export const CuratorModal: React.FC<CuratorModalProps> = ({
                           onClick={() => {
                             setSelectedEvidenceOpt(idx);
                             if (opt.isCorrect) {
+                              setHasCompletedLocal(true);
                               setEvidenceFeedback({
                                 type: 'success',
-                                message: 'Doğru! Değerlendirmenizi somut bir kanıtla desteklediniz. İncelemeyi onaylamak için "İncelemeyi Tamamla" butonuna basınız.'
+                                message: 'Doğru! Değerlendirmenizi somut bir kanıtla desteklediniz.'
+                              });
+                              onUpdateState(scholar.id, {
+                                isFullyEvaluated: true,
+                                curatorAnswerIndex: selectedCuratorOpt ?? undefined,
+                                anatoliaAnswerIndex: selectedAnatoliaOpt ?? undefined,
+                                evidenceAnswerIndex: idx,
+                                evaluatedAt: new Date().toISOString()
                               });
                             } else {
                               setEvidenceFeedback({
@@ -734,22 +751,13 @@ export const CuratorModal: React.FC<CuratorModalProps> = ({
                   </button>
 
                   <div className="flex items-center space-x-2">
-                    {!isComplete ? (
-                      <button
-                        disabled={selectedEvidenceOpt === null || !shuffledEvidenceOptions[selectedEvidenceOpt]?.isCorrect}
-                        onClick={handleVerifyEvidence}
-                        className="px-6 py-2.5 bg-gradient-to-r from-[#0d9488] to-[#0284c7] hover:from-[#0f766e] hover:to-[#0369a1] disabled:opacity-40 disabled:cursor-not-allowed text-white font-serif font-bold text-sm rounded-xl shadow-lg transition-all shadow-teal-700/20"
-                      >
-                        Kanıtı Doğrula ve Değerlendir
-                      </button>
-                    ) : (
-                      <button
-                        onClick={handleCompleteInspection}
-                        className="px-7 py-2.5 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 text-white font-serif font-bold text-sm rounded-xl shadow-lg transition-all shadow-emerald-700/20 cursor-pointer"
-                      >
-                        İncelemeyi Tamamla
-                      </button>
-                    )}
+                    <button
+                      disabled={selectedEvidenceOpt === null || !shuffledEvidenceOptions[selectedEvidenceOpt]?.isCorrect}
+                      onClick={handleCompleteInspection}
+                      className="px-7 py-2.5 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 disabled:opacity-40 disabled:cursor-not-allowed text-white font-serif font-bold text-sm rounded-xl shadow-lg transition-all shadow-emerald-700/20 cursor-pointer"
+                    >
+                      İncelemeyi Tamamla
+                    </button>
                   </div>
                 </div>
               </div>

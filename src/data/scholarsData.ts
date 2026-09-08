@@ -117,7 +117,7 @@ export const SCHOLARS_DATA: ScholarData[] = [
       type: 'DÜŞÜNCE / ÇALIŞMA',
       label: 'Düşünce İpucu',
       badge: 'Düşüncesi',
-      text: 'Türk boylarının yaşadığı coğrafyaları gezerek lehçeleri, söz varlığını, atasözlerini (sav), şiirleri (koşuk) toplamış ve Türk dünyasının ilk renkli haritasını çizmiştir.'
+      text: 'Türk boylarını gezerek "tama tama köl bolur" (damlaya damlaya göl olur) ve "qoş qılıç qınqa sıgmas" (iki kılıç bir kına sığmaz) gibi özgün atasözlerini derlemiş ve ilk Türk dünyası haritasını çizmiştir.'
     },
     clue3: {
       id: 'clue3',
@@ -126,7 +126,7 @@ export const SCHOLARS_DATA: ScholarData[] = [
       badge: 'Medeniyete Katkısı',
       text: 'Türkçenin dönemin hâkim dili olan Arapça ile boy ölçüşebilecek zenginlikte olduğunu kanıtlayarak milletlerarası saygınlığını belgelemiştir.'
     },
-    contribution: 'Türk dilinin, folklorunun, geleneklerinin ve coğrafi yayılımının ilk kapsamlı ansiklopedik envanterini çıkararak dünya Türkolojisinin kurucusu olmuştur.',
+    contribution: 'Dîvânu Lugâti’t-Türk ile Türk dilinin zenginliğini, boy lehçelerini ve özgün atasözlerini (savlar) ilk kez ansiklopedik yöntemle derleyerek Türk dünyası kültür hafızasını korumuştur.',
     anatoliaImpact: 'XI. yüzyılda Anadolu’ya yönelen Türk boylarının ortak söz varlığını, edebiyatını ve atasözlerini koruyarak Anadolu’da Türkçe konuşan toplumların ortak aidiyet bilincini güçlendirmiştir.',
     geography: 'Doğu Türkistan’ın Kaşgar şehrinde doğdu; Türk boylarının yaşadığı bozkırları dolaştıktan sonra eserini sunmak üzere Bağdat’a gitti.',
     influence: 'Türkçenin zenginliğini ilk kez bilimsel metotla ortaya koyarak dünya Türkolojisinin kurucusu oldu; ilk Türk dünyası haritasıyla dil ve kültür hafızasını korudu.',
@@ -206,14 +206,14 @@ export const SCHOLARS_DATA: ScholarData[] = [
       type: 'ESER',
       label: 'Eser İpucu',
       badge: 'Eseri',
-      text: 'Üçüncü dereceden cebirsel denklemleri koni kesitleri yardımıyla çözen eserin ve Sultan Melikşah için hazırlanan "Celali Takvimi" ile "Zîc-i Melikşahî"nin baş mimarıdır.'
+      text: 'Cebirsel denklemleri 25 ayrı türe ayırmış; 3. dereceden kübik denklemleri koni kesitleri yardımıyla çözmüş ve Sultan Melikşah için Celali Takvimi ile Zîc-i Melikşahî’yi hazırlamıştır.'
     },
     clue2: {
       id: 'clue2',
       type: 'DÜŞÜNCE / ÇALIŞMA',
       label: 'Düşünce İpucu',
       badge: 'Düşüncesi',
-      text: 'İsfahan Gözlemevi’ni yönetmiş, denklemleri 25 tipe ayırmış ve Descartes’tan asırlar önce koordinat sisteminin avantajlarını fark etmiştir.'
+      text: 'İsfahan Gözlemevi’ni yönetmiş, denklemleri 25 sınıfa ayırarak geometrik yöntemle çözmüş ve Descartes’tan asırlar önce koordinat sisteminin temellerini kurmuştur.'
     },
     clue3: {
       id: 'clue3',
@@ -222,7 +222,7 @@ export const SCHOLARS_DATA: ScholarData[] = [
       badge: 'Medeniyete Katkısı',
       text: 'Matematikte analitik geometrinin temellerini atmış; felsefede İbn Sina ekolünü izleyerek yazdığı rubailerle Doğu ve Batı edebiyatını derinden etkilemiştir.'
     },
-    contribution: 'Kübik denklemleri geometrik metotlarla çözmüş, 100 civarında sabit yıldızın konumunu belirlemiş ve güneş yılı esasına dayalı hatasız takvim geliştirmiştir.',
+    contribution: 'Denklemleri 25 sınıfa ayırıp 3. derece denklemleri koni kesitleriyle çözerek analitik geometriye öncülük etmiş; gökbilimde ise hatasız Celali Takvimi’ni geliştirmiştir.',
     anatoliaImpact: 'Büyük Selçuklu Devleti’nde kurduğu rasathane ve cebir geleneği, Anadolu Selçuklu medreselerindeki akli ilimler ve astronomi müfredatına doğrudan kaynaklık etmiştir.',
     geography: 'Horasan’ın Nişabur şehrinde doğdu ve yaşadı; Büyük Selçuklu Devleti başkenti İsfahan ve Merv’de bilimsel çalışmalar yaptı.',
     influence: 'İsfahan’da kurduğu rasathanede Celali Takvimi’ni hazırladı; analitik geometride koni kesitleri yöntemiyle Batı’da Descartes’a kadar aşılamayan cebirsel yeniliklere imza attı.',
@@ -309,7 +309,7 @@ export const SCHOLARS_DATA: ScholarData[] = [
       type: 'DÜŞÜNCE / ÇALIŞMA',
       label: 'Düşünce İpucu',
       badge: 'Düşüncesi',
-      text: 'Hava ve su dengesi ilkesini kullanarak su saatleri, mum saatleri, kan alma tekneleri, suyu yukarı çıkaran mekanizmalar ve saray kapısı gibi otomatik düzenekler tasarlamıştır.'
+      text: 'Hava ve su dengesiyle çalışan elliden fazla otomat tasarlamıştır. En ünlü eseri Fil Su Saati’nde; filin sırtındaki kâtip, şahinlerin ağzından düşen bronz toplar ve çan sesleriyle zamanı bildiren kusursuz bir mekanizma kurmuştur.'
     },
     clue3: {
       id: 'clue3',
@@ -318,7 +318,7 @@ export const SCHOLARS_DATA: ScholarData[] = [
       badge: 'Medeniyete Katkısı',
       text: 'Dönme hareketini doğrusal harekete çeviren krank mili ve kam mekanizmalarını sistemli uygulayarak sibernetik ve robotik biliminin öncüsü kabul edilmiştir.'
     },
-    contribution: 'Otomasyon ve hidrolik mühendisliği alanında suyun gücünü programlanabilir mekanik sistemlere dönüştürmüş, modern makine yapımının temel prensiplerini ortaya koymuştur.',
+    contribution: 'Otomasyon ve hidrolik alanında suyun gücünü mekanik dişlilere aktarmıştır; Fil Su Saati’ndeki kâtip, şahinler, düşen bronz toplar ve çan düzenekleriyle programlanabilir otomatların ilk örneklerini vermiştir.',
     anatoliaImpact: 'Artuklu Devleti döneminde Diyarbakır ve Cizre havzasını ileri mühendislik ve mekanik üretim merkezi haline getirmiş, Anadolu medeniyetinin teknolojik düzeyini sergilemiştir.',
     geography: 'Cizre’de doğdu; Güneydoğu Anadolu’daki Artuklu Devleti sarayında (Âmid/Diyarbakır) 25 yıl başmühendis olarak görev yaptı.',
     influence: 'Mekanik, sibernetik ve robotik biliminin ilk kurucusu oldu; su saatleri ve otomatik makineleriyle Leonardo da Vinci başta olmak üzere modern mühendislik tarihine öncülük etti.',
@@ -597,7 +597,7 @@ export const SCHOLARS_DATA: ScholarData[] = [
       type: 'DÜŞÜNCE / ÇALIŞMA',
       label: 'Düşünce İpucu',
       badge: 'Düşüncesi',
-      text: 'Horasan’dan Anadolu’ya gelerek Suluca Karahöyük (Hacımköy) civarında halkı bilinçlendirmiş; ilim, cömertlik, hayâ, sabır ve edep gibi erdemleri savunmuştur.'
+      text: 'Horasan’dan gelerek Suluca Karahöyük’te halkı aydınlatmış; Makâlât eserinde kalbin yedi kalesini koruyan yedi muhafızı (ilim, cömertlik, hayâ, sabır, perhizkârlık, korku ve edep) ahlakın temeli saymıştır.'
     },
     clue3: {
       id: 'clue3',
@@ -606,7 +606,7 @@ export const SCHOLARS_DATA: ScholarData[] = [
       badge: 'Medeniyete Katkısı',
       text: 'Dervişleri Anadolu ve Balkanlarda Bektaşilik anlayışını yaymış; vefatından sonra kurulan Osmanlı Devleti’nde Yeniçeri Ocağının piri kabul edilmiştir.'
     },
-    contribution: 'İnsan sevgisini, barışı, nefis terbiyesini ve ahlaki olgunlaşmayı öne çıkararak toplumsal birliğin ve hoşgörünün temellerini inşa etmiştir.',
+    contribution: 'Makâlât eserinde kalbin yedi kalesini koruyan yedi muhafız (ilim, cömertlik, hayâ, sabır, perhizkârlık, korku, edep) alegorisiyle erdemli ve birleştirici bir insan modeli inşa etmiştir.',
     anatoliaImpact: 'Türkiye Selçuklu Devleti’nin zayıfladığı dönemde göçebe ve yerleşik Türkmenleri irşat ederek toplumsal direnç kazandırmış, Balkanlar ve Anadolu’da kaynaşmayı sağlamıştır.',
     geography: 'Horasan’ın Nişabur şehrinde doğdu; Anadolu’ya gelerek Nevşehir civarındaki Suluca Karahöyük’e (Hacımköy) yerleşti.',
     influence: 'Selçuklu’nun zayıfladığı dönemde Anadolu Türkmenlerini kaynaştırdı, esnaf ve Ahilik teşkilatını destekledi; dervişleri Balkanları aydınlatırken Osmanlı’da Yeniçeri Ocağının pîri kabul edildi.',
@@ -789,16 +789,16 @@ export const SCHOLARS_DATA: ScholarData[] = [
       type: 'DÜŞÜNCE / ÇALIŞMA',
       label: 'Düşünce İpucu',
       badge: 'Düşüncesi',
-      text: 'I. Alâeddin Keykubad dönemini kapsamlı şekilde ele almış; siyasi olayların yanında ilk kez ikta, mülk ve hibe türü toprak yönetimi ile adalet (dadgâh) işleyişini kaydetmiştir.'
+      text: 'I. Alâeddin Keykubad dönemini kapsamlı şekilde ele almış; Türkiye Selçuklularında ikta, mülk ve hibe türü toprak yapısını ilk kez kayda geçirip dadgâh (adalet divanı) işleyişini belgelemiştir.'
     },
     clue3: {
       id: 'clue3',
       type: 'ETKİ',
       label: 'Etki İpucu',
       badge: 'Medeniyete Katkısı',
-      text: 'Sultan Gıyaseddin Keyhüsrev’in Antalya fethini, soyulan tüccarların zararını devlet hazinesinden karşılayarak sağladığı adaleti anlatmış ve Selçuklu idari hafızasını günümüze ulaştırmıştır.'
+      text: 'Sultan Gıyaseddin Keyhüsrev’in Antalya fethini ve soyulan tüccarların zararını bizzat devlet hazinesinden ödeyerek tarihteki ilk devlet ticaret sigortası adaletini uygulayışını kaydetmiştir.'
     },
-    contribution: 'Türkiye Selçuklularının devlet yönetimini, toprak düzenini, sosyal adaletini ve şehirleşmesini birinci elden kaydederek Anadolu tarih yazıcılığının en temel kaynağını bırakmıştır.',
+    contribution: 'Türkiye Selçuklularında ikta, mülk ve hibe toprak düzenini ilk kez sınıflandırmış; Antalya’da tüccarların zararını devlet hazinesinden karşılayan adalet nizamını birinci elden günümüze aktarmıştır.',
     anatoliaImpact: 'Selçukluların Anadolu’da kurduğu adalet teşkilatını, ticari güvenceleri ve imar faaliyetlerini belgeleyerek Anadolu’nun bir Türk-İslam yurdu olarak nasıl teşkilatlandığını aydınlatmıştır.',
     geography: 'Nişabur kökenli bir ailede doğdu; Türkiye Selçuklu başkenti Konya’da yetişti ve Selçuklu Dîvânı’nda resmî devlet tarihçisi olarak görev yaptı.',
     influence: 'Türkiye Selçuklularının 1192-1280 arasındaki siyasi, ticari, iskân ve toprak yapısını (ikta, mülk, hibe) birinci elden günümüze aktaran en temel ana kaynak olan Selçuknâme’yi yazdı.',
