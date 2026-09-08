@@ -11,7 +11,7 @@ export const IntroScreen: React.FC<IntroScreenProps> = ({ onStart }) => {
       {/* Historical Seljuk Scholars & Observatory Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center transition-opacity duration-700"
-        style={{ backgroundImage: `url('/images/seljuk_scholars_bg.jpg')` }}
+        style={{ backgroundImage: `url('${import.meta.env.BASE_URL}images/seljuk_scholars_bg.jpg')` }}
       />
 
       {/* Atmospheric Seljuk Firuze/Turquoise & Vignette Tint Layer */}

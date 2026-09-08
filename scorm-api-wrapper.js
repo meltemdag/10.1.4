@@ -64,23 +64,8 @@
      * Sandbox modunda tüm loglar görünür.
      */
     function log(message, type) {
-        type = type || 'info';
-
-        // Aktif kanal varsa ve hata değilse → sessiz kal
-        if (activeChannel && type !== 'error') return;
-
-        var colors = {
-            error:   '#ef4444',
-            success: '#10b981',
-            warning: '#f59e0b',
-            info:    '#6366f1'
-        };
-
-        console.log(
-            '%c[SCORM] %c' + message,
-            'color: ' + (colors[type] || colors.info) + '; font-weight: bold;',
-            'color: inherit;'
-        );
+        // Kural 6 gereğince konsola kesinlikle SCORM logu yazdırılmaz (Sessiz Çalışma)
+        return;
     }
 
     // ─────────────────────────────────────────────

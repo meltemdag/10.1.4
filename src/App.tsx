@@ -107,9 +107,6 @@ export default function App() {
       const win = window as any;
       if (win.SCORM && typeof win.SCORM.initialize === 'function') {
         win.SCORM.initialize();
-        if (typeof win.SCORM.setStatus === 'function') {
-          win.SCORM.setStatus('completed');
-        }
       }
     } catch {
       // Sessiz çalışma
@@ -206,7 +203,7 @@ export default function App() {
         {/* Historical Seljuk Background Image */}
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-30"
-          style={{ backgroundImage: `url('/images/seljuk_scholars_bg.jpg')` }}
+          style={{ backgroundImage: `url('${import.meta.env.BASE_URL}images/seljuk_scholars_bg.jpg')` }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a272c]/90 via-[#0f766e]/40 to-[#061e22]/95 backdrop-blur-[2px]" />
         <div className="relative z-10 w-full max-w-lg bg-white/95 backdrop-blur-md border-2 border-[#0d9488]/40 rounded-3xl p-8 sm:p-10 text-center shadow-[0_25px_60px_rgba(0,0,0,0.5)] text-[#0f2933]">
