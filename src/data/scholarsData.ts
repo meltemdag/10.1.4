@@ -36,53 +36,53 @@ export const SCHOLARS_DATA: ScholarData[] = [
     influence: 'Yetiştirdiği Horasan erenleri Anadolu ve Balkanların İslamlaşmasına öncülük etti; Yunus Emre, Mevlana ve Hacı Bektaş Veli gibi bilgelerin yetişeceği zeminini hazırladı.',
     curatorQuestion: 'Hoca Ahmed Yesevi’nin medeniyet birikimine en önemli katkısı nedir?',
     curatorOptions: [
-      'Güneş takvimini hazırlayarak gözlemevleri kurması',
-      'Ahlak ve inanç ilkelerini ana dili olan arı Türkçe ile ifade ederek halkın anlayışına sunması',
-      'Askerî savunma taktikleri ve kuşatma makineleri geliştirmesi',
-      'Yabancı dillerden felsefe metinlerini saray için çevirmesi'
+      'Gökbilim ve matematik alanında Arapça risaleler yazarak medreselerde kuramsal dersler vermesi',
+      'Dini ve ahlaki ilkeleri ana dili olan Türkçe ile hikmetler halinde halkın anlayışına sunması',
+      'Saray bürokrasisine yönelik Farsça siyasetnameler kaleme alarak devlet teşkilatını düzenlemesi',
+      'Eski Yunan felsefesinden çeviriler yaparak mantık kurallarını saray çevresinde yaygınlaştırması'
     ],
     curatorFeedbacks: [
-      'Gökbilim ve takvim çalışmaları fen bilimcilerinin alanına girmektedir. Bu mutasavvıfın halkın anlayacağı dille tasavvufi ve ahlaki şiirler (hikmetler) yazdığını dikkate alınız.',
+      'Gökbilim ve matematik çalışmaları fen âlimlerinin alanıdır. Bu mutasavvıfın halkın anlayacağı dille ahlaki şiirler (hikmetler) yazdığını dikkate alınız.',
       'Doğru! Dîvân-ı Hikmet ile Türkçeyi bir irfan dili haline getirme başarısını doğru tespit ettiniz.',
-      'Bu mutasavvıf bir ordu komutanı veya askerî mühendis değildir; manevi irşat ve ahlak eğitimiyle tanınan bir mutasavvıftır. İpuçlarındaki eser ve düşünce boyutlarını inceleyiniz.',
-      'Bu mutasavvıf yabancı diller veya saray çevresi yerine, halkın konuştuğu ana dili öncelemiştir. İpuçlarında yer alan dil tercihini gözden geçiriniz.'
+      'Bu mutasavvıf saray bürokrasisine değil; geniş halk kitlelerine seslenen irşat ve ahlak eğitimiyle tanınmıştır. Dil ve hitap boyutunu inceleyiniz.',
+      'Bu bilge Yunan felsefesi çevirmeni değil; İslam irfanını ana diliyle halkın vicdanında kökleştiren bir pîrdir. İpuçlarındaki dil tercihini gözden geçiriniz.'
     ],
     correctCuratorOption: 1,
     anatoliaQuestion: 'Bu katkının Anadolu’nun imar ve iskân sürecindeki rolünü nasıl değerlendirirsiniz?',
     anatoliaOptions: [
-      'Doğu Roma sarayı ile ticari antlaşmalar imzalanmasını sağlaması',
-      'Anadolu Selçuklu ordusunun deniz donanmasını yönetmesi',
-      'Horasan erenlerinin Anadolu’da kurdukları tekkelerle göçmen boyları kaynaştırıp toplumsal dayanışmayı güçlendirmesi',
-      'Yalnızca saray çevresinde edebi sohbetler düzenlemesi'
+      'Akdeniz limanlarında serbest ticaret bölgeleri kurarak yabancı tüccarlara vergi muafiyeti sağlaması',
+      'Anadolu Selçuklu ordusunun başına geçerek Doğu Roma sınırındaki savunma kalelerini doğrudan yönetmesi',
+      'Horasan erenlerinin açtığı tekkelerle Türkmen boylarını kaynaştırıp toplumsal dayanışmayı güçlendirmesi',
+      'Konya sarayında resmi divan dili olarak yalnızca Farsça ve Arapçanın kullanılmasını zorunlu kılması'
     ],
     anatoliaFeedbacks: [
-      'Bu mutasavvıf doğrudan diplomatik antlaşmalar yürüten bir devlet adamı değildir. Yetiştirdiği dervişlerin göç hareketlerindeki rolünü düşününüz.',
-      'Türkistan sahasında yaşayan bu mutasavvıfın denizcilik veya ordu komutanlığı faaliyeti bulunmamaktadır. Anadolu’da kurulan tekkelerin toplumsal etkisini değerlendiriniz.',
+      'Bu mutasavvıf ticari gümrük politikaları yöneten bir maliyeci değildir. Dervişlerin Anadolu’ya göçündeki toplumsal kaynaşma rolünü düşününüz.',
+      'Türkistan sahasında yaşayan bu mutasavvıfın sınır komutanlığı faaliyeti bulunmamaktadır. Anadolu’da kurulan tekkelerin manevi etkisini değerlendiriniz.',
       'Doğru! Yesevi dervişlerinin Anadolu’nun yurt edinilmesindeki kaynaştırıcı rolünü doğru tespit ettiniz.',
-      'Yesevilik hareketi saray çevreleriyle sınırlı kalmamış, geniş halk kitlelerini ve köyleri kucaklamıştır. Toplumsal kaynaşma boyutuna odaklanınız.'
+      'Yesevi geleneği saray dillerini zorunlu kılmamış; tam tersine Türkçeyi irfan dili yaparak halkı birleştirmiştir. Kültürel kaynaşma boyutuna odaklanınız.'
     ],
     correctAnatoliaOption: 2,
     evidenceQuestion: 'Bu çıkarıma ulaşmanızı sağlayan kanıt hangisidir?',
     evidenceOptions: [
       {
-        text: 'Anadolu’da bizzat siyasi fermanlar yayımlayarak ordu komutanlığı yapması',
+        text: 'Anadolu Selçuklu sultanlarının adına bastırdığı hükümdarlık fermanları ve madeni paralar',
         isCorrect: false,
-        explanation: 'Bu mutasavvıfın devlet yöneticisi veya askerî komutan olmadığını, manevi bir önder olduğunu hatırlayınız.'
+        explanation: 'Bu mutasavvıfın hükümdar değil, manevi bir yol gösterici olduğunu; adına ferman basılmadığını hatırlayınız.'
       },
       {
-        text: 'Dîvân-ı Hikmet’in yalın Türkçesi ve yetiştirdiği Horasan erenlerinin Anadolu’daki zaviye faaliyetleri',
+        text: 'Dîvân-ı Hikmet’in yalın Türkçesi ve dervişlerinin Anadolu’daki zaviye ve iskân faaliyetleri',
         isCorrect: true,
         explanation: 'Dîvân-ı Hikmet’in Türkçe kaleme alınmış olması ve Yesevi dervişlerinin Anadolu iskânındaki rolü birincil kaynaklarla sabittir.'
       },
       {
-        text: 'Haçlı ordularına karşı deniz savaşları yönettiğini gösteren kronikler',
+        text: 'Doğu Roma imparatoruyla bizzat imzaladığı sınır güvenliği ve ticaret vergisi muahedeleri',
         isCorrect: false,
-        explanation: 'Bu mutasavvıf Türkistan sahasında yaşamış olup deniz savaşlarıyla ilgisi bulunmamaktadır. Eser ve kültür kayıtlarını inceleyiniz.'
+        explanation: 'Bu mutasavvıfın diplomatik antlaşmalar imzalayan bir elçi değil, manevi önder olduğunu anımsayınız.'
       },
       {
-        text: 'Sadece Arapça terimler kullanarak seçkin zümreye hitap etmesi',
+        text: 'İsfahan Rasathanesi’nde yıldızların koordinatlarını gösteren gökbilim cetveli kayıtları',
         isCorrect: false,
-        explanation: 'Bu mutasavvıfın eserlerinde halkın konuştuğu ana dili tercih ettiğini belirten ipucunu anımsayınız.'
+        explanation: 'Gözlemevi kayıtlarının astronomi bilginlerine ait olduğunu göz önünde bulundurunuz.'
       }
     ],
     dimensions: {
@@ -132,27 +132,27 @@ export const SCHOLARS_DATA: ScholarData[] = [
     influence: 'Türkçenin zenginliğini ilk kez bilimsel metotla ortaya koyarak dünya Türkolojisinin kurucusu oldu; ilk Türk dünyası haritasıyla dil ve kültür hafızasını korudu.',
     curatorQuestion: 'Kaşgarlı Mahmud’un insanlığın ortak mirasına en önemli katkısı nedir?',
     curatorOptions: [
-      'Türk dilinin söz varlığını, atasözlerini ve lehçelerini ilk kez ansiklopedik bir yöntem ve haritayla belgelemesi',
-      'Gökbilim rasathaneleri kurarak yıldız cetvelleri hazırlaması',
-      'Devletler hukuku ilkelerini belirleyen diplomatik fermanlar yazması',
-      'Ordunun süvari taktiklerini anlatan nizamnameler kaleme alması'
+      'Türk dilinin zenginliğini, boy lehçelerini ve özgün atasözlerini ansiklopedik yöntem ve haritayla belgelemesi',
+      'İslam dünyasında tıp ve cerrahi yöntemlerini sınıflandırarak anatomi üzerine kapsamlı risaleler yazması',
+      'Saray bürokrasisi ve devlet teşkilatını düzenleyen diplomatik muahedeler ve siyasetnameler kaleme alması',
+      'Bozkır ordularının savaş ve süvari taktiklerini sistemleştiren askerî talimnameler ve kanunlar hazırlaması'
     ],
     curatorFeedbacks: [
       'Doğru! Dîvânu Lugâti’t-Türk’ün dünya kültür ve dil mirasına sağladığı eşsiz katkıyı doğru belirlediniz.',
-      'Rasathane ve yıldız cetvelleri gökbilimcilerin çalışma alanıdır. Bu bilim insanının dil, kültür ve söz varlığı üzerine yaptığı araştırmaları düşününüz.',
-      'Bu bilim insanı bir diplomat veya kanun koyucu değildir. Türk boylarını gezerek derlediği kelime ve atasözlerini hatırlayınız.',
+      'Tıp ve anatomi risaleleri hekimlerin çalışma alanıdır. Bu bilim insanının dil, kültür ve söz varlığı üzerine yaptığı araştırmaları düşününüz.',
+      'Bu bilim insanı bir diplomat veya bürokrat değildir. Türk boylarını gezerek derlediği kelime ve atasözlerini hatırlayınız.',
       'Bu bilim insanı askerî talimnameler yazmamış; dilimizin zenginliğini kanıtlayan ansiklopedik bir sözlük kaleme almıştır. İpuçlarını inceleyiniz.'
     ],
     correctCuratorOption: 0,
     anatoliaQuestion: 'Bu çalışmanın Anadolu sahasındaki yansıması nasıl açıklanabilir?',
     anatoliaOptions: [
-      'Anadolu maden yataklarının haritasını çıkararak işletmeye açması',
-      'Doğu Roma sınırında yeni taş surlar inşa ettirmesi',
-      'Yalnızca sarayda kullanılan yabancı yazı dilini zorunlu kılması',
-      'Anadolu’ya yerleşen farklı boyların ortak dil, edebiyat ve atasözleri etrafında kültürel birliklerini korumalarını sağlaması'
+      'Akdeniz limanlarında serbest pazar alanları açarak uluslararası ticaret yollarını doğrudan yönetmesi',
+      'Doğu Roma sınır boylarında taştan kale ve surlar inşa ettirerek askerî savunma hattını güçlendirmesi',
+      'Konya sarayında ve medreselerde Türkçe yerine yalnızca yabancı dillerin kullanılmasını şart koşması',
+      'Anadolu’ya yerleşen farklı boyların ortak dil ve atasözleri etrafında kültürel birliğini koruması'
     ],
     anatoliaFeedbacks: [
-      'Bu bilim insanı madencilik veya jeoloji alanında çalışmamıştır. Türk boylarının ortak kültürel ve dilsel mirasına odaklanınız.',
+      'Bu bilim insanı liman ticareti veya gümrük alanında çalışmamıştır. Türk boylarının ortak kültürel ve dilsel mirasına odaklanınız.',
       'Bu bilim insanı kale veya sur inşa eden bir mimar ya da asker değildir. Dilin ve ortak hafızanın toplum üzerindeki etkisini değerlendiriniz.',
       'Bu bilim insanı yabancı dilleri zorunlu kılmamış; tam aksine Türkçenin büyüklüğünü ve zenginliğini savunmuştur. Dil birliği boyutunu düşününüz.',
       'Doğru! Ortak dil ve atasözlerinin Anadolu’daki Türkmen boyları arasındaki kültürel birleştirici etkisini doğru tespit ettiniz.'
@@ -161,22 +161,22 @@ export const SCHOLARS_DATA: ScholarData[] = [
     evidenceQuestion: 'Bu çıkarıma ulaşmanızı sağlayan kanıt hangisidir?',
     evidenceOptions: [
       {
-        text: 'Malazgirt Meydan Muharebesi’nde süvari komutanı olarak görev yapması',
+        text: 'Malazgirt Zaferi sırasında Selçuklu ordusunda süvari birliklerine kumandanlık yaptığını bildiren kitabeler',
         isCorrect: false,
         explanation: 'Bu bilim insanının askerî bir komutan değil, büyük bir dilbilimci ve kültür araştırmacısı olduğunu hatırlayınız.'
       },
       {
-        text: 'Konya medreselerinde bizzat yöneticilik yaptığına dair vakfiyeler',
+        text: 'Konya medreselerinde felsefe müderrisliği yaparak vakıf arazilerini bizzat idare ettiğini gösteren vakfiyeler',
         isCorrect: false,
         explanation: 'Bu bilim insanı eserini Bağdat’ta halifeye sunmuştur; Anadolu’da medrese yöneticiliği yapmamıştır. Eserine ait somut belgelere odaklanınız.'
       },
       {
-        text: 'Dîvânu Lugâti’t-Türk’teki boy lehçeleri derlemeleri, atasözleri ve ilk Türk dünyası haritası',
+        text: 'Dîvânu Lugâti’t-Türk’te yer alan boy lehçeleri derlemeleri, özgün atasözleri ve ilk Türk dünyası haritası',
         isCorrect: true,
         explanation: 'Eserdeki 7500’den fazla kelime, atasözleri ve dairevi dünya haritası bu bilimsel başarının somut kanıtıdır.'
       },
       {
-        text: 'Yalnızca aşk konulu şiirler içeren bağımsız bir divan yazmış olması',
+        text: 'Saray eğlencelerinde icra edilmek üzere yalnızca lirik şiirler içeren müstakil bir divan kaleme alması',
         isCorrect: false,
         explanation: 'Bu bilim insanının eserinin bir şiir mecmuası değil, ilk Türkçe sözlük ve kapsamlı bir kültür ansiklopedisi olduğunu anımsayınız.'
       }
@@ -228,51 +228,51 @@ export const SCHOLARS_DATA: ScholarData[] = [
     influence: 'İsfahan’da kurduğu rasathanede Celali Takvimi’ni hazırladı; analitik geometride koni kesitleri yöntemiyle Batı’da Descartes’a kadar aşılamayan cebirsel yeniliklere imza attı.',
     curatorQuestion: 'Ömer Hayyam’ın bilim mirasına yaptığı en belirgin katkı nedir?',
     curatorOptions: [
-      'Yalnızca tasavvufi şiirler kaleme alması',
-      'Top döküm yöntemleri geliştirerek kuşatma makineleri üretmesi',
-      'Üçüncü dereceden denklemleri geometrik yolla çözmesi ve hassas güneş takvimi (Celali) geliştirmesi',
-      'Kervanların güvenliği için posta teşkilatı kurması'
+      'Tasavvufi tekkeler açarak dervişlerin terbiyesi için ahlaki öğütler içeren ilmihal risaleleri kaleme alması',
+      'Kuşatma savaşlarında kullanılmak üzere yüksek menzilli mancınıklar ve yeni istihkâm sistemleri geliştirmesi',
+      'Üçüncü derece denklemleri koni kesitleriyle çözerek geometriye öncülük etmesi ve Celali Takvimi’ni hazırlaması',
+      'Kervan yollarının güvenliğini sağlamak amacıyla posta menzil teşkilatını ve gümrük nizamnamesini kurması'
     ],
     curatorFeedbacks: [
-      'Bu bilim insanı rubaileriyle tanınmakla birlikte, dünya bilim mirasına matematik ve gökbilim alanında çığır açıcı yenilikler kazandırmıştır. İpuçlarını inceleyiniz.',
-      'Bu bilim insanı askerî silah teknolojisi değil; kuramsal matematik, cebir ve takvim bilimi üzerine yoğunlaşmıştır. İpuçlarındaki cebirsel yöntemleri anımsayınız.',
+      'Bu bilim insanı rubaileriyle tanınmakla birlikte; dünya bilim mirasına matematik ve gökbilim alanında çığır açıcı yenilikler kazandırmıştır. İpuçlarını inceleyiniz.',
+      'Bu bilim insanı kuşatma silahları değil; kuramsal matematik, cebir ve takvim bilimi üzerine yoğunlaşmıştır. İpuçlarındaki cebirsel yöntemleri anımsayınız.',
       'Doğru! Kübik denklemleri koni kesitleriyle çözme ve Celali Takvimi’ni geliştirme katkısını başarıyla belirlediniz.',
       'Posta teşkilatı devlet idaresinin bir kurumudur. Bu bilim insanının rasathane ve cebir risalelerindeki buluşlarını göz önünde bulundurunuz.'
     ],
     correctCuratorOption: 2,
     anatoliaQuestion: 'Bu bilimsel birikimin Selçuklu coğrafyasına etkisi nasıl özetlenebilir?',
     anatoliaOptions: [
-      'Tarımsal faaliyetlerin durdurulup sadece ticarete yönelinmesi',
-      'İsfahan’daki rasathane ve matematik birikiminin Anadolu medreselerindeki akli bilim eğitimini zenginleştirmesi',
-      'Yalnızca saray çevresinde takvim kullanımına izin verilmesi',
-      'Edebi metinlerin fen bilimlerinden tamamen ayrıştırılması'
+      'Bozkır tarımının tamamen terk edilerek tüm toplumun yalnızca Akdeniz liman ticaretine yönlendirilmesi',
+      'İsfahan’daki rasathane ve cebir birikiminin Anadolu medreselerindeki akli ilimler eğitimini zenginleştirmesi',
+      'Geliştirilen takvim ve gökbilim cetvellerinin medreseler yerine yalnızca saray bürokrasisine hapsedilmesi',
+      'Medrese müfredatında fen bilimlerinin tamamen kaldırılarak sadece dilbilgisi kurallarının okutulması'
     ],
     anatoliaFeedbacks: [
-      'Bilimsel gelişmeler üretimi durdurmaz; tam tersine takvim tarımsal zamanlamayı düzenler. Medreselerdeki akli ilimler eğitimine odaklanınız.',
+      'Bilimsel gelişmeler üretimi durdurmaz; takvim çalışmaları zamanlamayı düzenler. Medreselerdeki akli ilimler eğitimine odaklanınız.',
       'Doğru! Selçuklu rasathane geleneğinin Anadolu medreselerindeki matematik ve astronomi müfredatına katkısını doğru tespit ettiniz.',
-      'Geliştirilen takvim ve bilimsel bilgiler medreseler yoluyla geniş bir eğitim ağına yayılmıştır. Eğitime olan katkıyı değerlendiriniz.',
-      'Dönemin bilim insanları hem edebiyat hem de fen bilimlerini bir arada yürütmüştür. Medreselerdeki akli bilimler etkisini düşününüz.'
+      'Geliştirilen takvim ve bilimsel bilgiler saraya hapsedilmemiş, medreseler yoluyla geniş bir eğitim ağına yayılmıştır. Eğitime olan katkıyı değerlendiriniz.',
+      'Selçuklu medreselerinde akli ilimler ve nakli ilimler birlikte okutulmuştur. Medreselerdeki fen bilimleri etkisini düşününüz.'
     ],
     correctAnatoliaOption: 1,
     evidenceQuestion: 'Bu çıkarıma ulaşmanızı sağlayan kanıt hangisidir?',
     evidenceOptions: [
       {
-        text: 'Cebir Risalesi yazmaları, Zîc-i Melikşahî yıldız koordinat tablosu ve Celali Takvimi kayıtları',
+        text: 'Cebir Risalesi nüshaları, Zîc-i Melikşahî yıldız koordinat tabloları ve Celali Takvimi kayıtları',
         isCorrect: true,
         explanation: 'Hayyam’ın kübik denklemleri koni kesitleriyle çözdüğü Cebir Risalesi ve hazırladığı Zîc-i Melikşahî bilim tarihindeki somut belgelerdir.'
       },
       {
-        text: 'Doğu Roma İmparatorluğu ile imzalanan askeri ittifak metinleri',
+        text: 'Doğu Roma İmparatorluğu ile Selçuklu ordusu arasında imzalanan sınır güvenliği ve ittifak muahedeleri',
         isCorrect: false,
         explanation: 'Bu bilim insanının bir devlet başkanı veya elçi değil, bilgin ve matematikçi olduğunu hatırlayınız.'
       },
       {
-        text: 'Mısır Piramitlerinin onarımında mühendis olarak çalıştığına dair iddialar',
+        text: 'Mısır Piramitlerinin restorasyonunda başmühendis sıfatıyla çalıştığını öne süren seyahatname notları',
         isCorrect: false,
         explanation: 'Bu bilim insanının araştırmalarını Selçuklu coğrafyasında (Nişabur, Semerkant, İsfahan) yürüttüğünü anımsayınız.'
       },
       {
-        text: 'Sadece eğlence ve meclis şiirleri yazan bir saray şairi olduğunu belirten dedikodular',
+        text: 'Dönemin saray meclislerinde yalnızca eğlence kasideleri okuyan bir şair olduğunu iddia eden rivayetler',
         isCorrect: false,
         explanation: 'Bu bilim insanının fen ve felsefe alanındaki derin yetkinliğini ve rasathane çalışmalarını göz önünde bulundurunuz.'
       }
