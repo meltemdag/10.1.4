@@ -112,7 +112,7 @@ export const FinalCuratorMission: React.FC<FinalCuratorMissionProps> = ({
           <div className="flex items-center space-x-3">
             <div>
               <span className="text-[10px] font-serif uppercase tracking-widest text-[#ccfbf1] font-bold">
-                Tüm Şahsiyetler İncelendi • Kapanış Görevi
+                Tüm İlim İnsanları İncelendi • Kapanış Görevi
               </span>
               <h2 className="font-serif text-lg sm:text-xl font-bold text-white">
                 Şimdi Sıra Sizde: Büyük Değerlendirme
@@ -137,7 +137,7 @@ export const FinalCuratorMission: React.FC<FinalCuratorMissionProps> = ({
                 : 'border-transparent text-slate-500'
             }`}
           >
-            1. 3 Öncü Şahsiyeti Seçiniz ({selectedIds.length}/3)
+            1. 3 Öncü Âlimi Seçiniz ({selectedIds.length}/3)
           </div>
           <div
             className={`py-2.5 px-2 border-b-2 transition-colors ${
@@ -169,7 +169,7 @@ export const FinalCuratorMission: React.FC<FinalCuratorMissionProps> = ({
                   Anadolu’nun Türkleşmesi ve İslamlaşması Açısından En Etkili Olduğunu Değerlendirdiğiniz 3 İsmi Seçiniz:
                 </h3>
                 <p className="text-xs text-slate-600 mt-1">
-                  İncelediğiniz 9 büyük şahsiyet arasından, Anadolu'nun vatanlaşma ve medeniyetleşme sürecinde en kritik etkiyi bıraktığını değerlendirdiğiniz üç portreyi işaretleyiniz.
+                  İncelediğiniz 9 büyük âlim arasından, Anadolu'nun vatanlaşma ve medeniyetleşme sürecinde en kritik etkiyi bıraktığını değerlendirdiğiniz üç portreyi işaretleyiniz.
                 </p>
               </div>
 
@@ -190,7 +190,7 @@ export const FinalCuratorMission: React.FC<FinalCuratorMissionProps> = ({
                     >
                       <div className="flex items-start justify-between">
                         <span className="text-[10px] font-serif uppercase tracking-widest text-[#0d9488] font-bold">
-                          #{scholar.number} {scholar.field.split('/')[0]}
+                          Portre #{scholar.number}
                         </span>
                         <div
                           className={`w-5 h-5 rounded-full border flex items-center justify-center text-xs ${
@@ -249,10 +249,10 @@ export const FinalCuratorMission: React.FC<FinalCuratorMissionProps> = ({
             <div className="space-y-5">
               <div className="p-4 bg-[#f0fdfa] border border-[#0d9488]/30 rounded-2xl">
                 <h3 className="font-serif font-bold text-sm text-[#0f766e]">
-                  Seçtiğiniz 3 Şahsiyet İçin Gerekçelerinizi Belirleyiniz:
+                  Seçtiğiniz 3 Âlim İçin Gerekçelerinizi Belirleyiniz:
                 </h3>
                 <p className="text-xs text-slate-600 mt-1">
-                  Her şahsiyet için medeniyete etkisini en iyi açıklayan gerekçeyi işaretleyiniz.
+                  Her âlim için medeniyete etkisini en iyi açıklayan gerekçeyi işaretleyiniz.
                 </p>
               </div>
 
@@ -310,7 +310,7 @@ export const FinalCuratorMission: React.FC<FinalCuratorMissionProps> = ({
                   onClick={() => setStep('select3')}
                   className="text-xs text-[#0f766e] hover:text-[#115e59] font-medium"
                 >
-                  ← Şahsiyet Seçimine Dönünüz
+                  ← Âlim Seçimine Dönünüz
                 </button>
 
                 <button
@@ -361,7 +361,7 @@ export const FinalCuratorMission: React.FC<FinalCuratorMissionProps> = ({
               {/* Summary of chosen 3 */}
               <div className="p-3.5 bg-[#f0fdfa] border border-[#0d9488]/25 rounded-2xl text-xs space-y-1">
                 <span className="font-serif font-bold text-[#0f766e]">
-                  Belirlediğiniz 3 Öncü Şahsiyet:
+                  Belirlediğiniz 3 Öncü Âlim:
                 </span>
                 <div className="flex flex-wrap gap-2.5 mt-2">
                   {selectedIds.map((id) => {

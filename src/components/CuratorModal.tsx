@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ScholarData, DiscoveredScholarState } from '../types';
 import { SCHOLARS_DATA } from '../data/scholarsData';
+import { shuffleArray } from '../utils/shuffle';
 import { PortraitArt } from './PortraitArt';
 
 interface CuratorModalProps {
@@ -23,6 +24,8 @@ export const CuratorModal: React.FC<CuratorModalProps> = ({
   // Local stage management: 'clues' | 'guessing' | 'revealed' | 'curator_eval' | 'evidence' | 'completed'
   const isGuessed = scholarState.isNameGuessed;
   const isFullyEvaluated = scholarState.isFullyEvaluated;
+  const [hasCompletedLocal, setHasCompletedLocal] = useState(false);
+  const isComplete = isFullyEvaluated || hasCompletedLocal;
 
   const [activeTab, setActiveTab] = useState<'clues' | 'guessing' | 'knowledge' | 'curator' | 'evidence'>(
     isFullyEvaluated ? 'knowledge' : isGuessed ? 'curator' : 'clues'
@@ -38,16 +41,55 @@ export const CuratorModal: React.FC<CuratorModalProps> = ({
     };
   }, []);
 
+  // Shuffled candidate scholars for Tab 2 (Guessing)
+  const shuffledCandidates = useMemo(() => {
+    return shuffleArray(SCHOLARS_DATA);
+  }, [scholar.id]);
+
+  // Shuffled Question 1 options and feedback
+  const shuffledCuratorOptions = useMemo(() => {
+    const list = scholar.curatorOptions.map((text, idx) => ({
+      text,
+      feedback: scholar.curatorFeedbacks?.[idx] || '',
+      isCorrect: idx === scholar.correctCuratorOption
+    }));
+    return shuffleArray(list);
+  }, [scholar.id]);
+
+  // Shuffled Question 2 options and feedback
+  const shuffledAnatoliaOptions = useMemo(() => {
+    const list = scholar.anatoliaOptions.map((text, idx) => ({
+      text,
+      feedback: scholar.anatoliaFeedbacks?.[idx] || '',
+      isCorrect: idx === scholar.correctAnatoliaOption
+    }));
+    return shuffleArray(list);
+  }, [scholar.id]);
+
+  // Shuffled Question 3 (Evidence) options
+  const shuffledEvidenceOptions = useMemo(() => {
+    return shuffleArray([...scholar.evidenceOptions]);
+  }, [scholar.id]);
+
   // Evaluation local state
-  const [selectedCuratorOpt, setSelectedCuratorOpt] = useState<number | null>(
-    scholarState.curatorAnswerIndex ?? null
-  );
-  const [selectedAnatoliaOpt, setSelectedAnatoliaOpt] = useState<number | null>(
-    scholarState.anatoliaAnswerIndex ?? null
-  );
-  const [selectedEvidenceOpt, setSelectedEvidenceOpt] = useState<number | null>(
-    scholarState.evidenceAnswerIndex ?? null
-  );
+  const [selectedCuratorOpt, setSelectedCuratorOpt] = useState<number | null>(() => {
+    if (scholarState.isFullyEvaluated) {
+      return shuffledCuratorOptions.findIndex((o) => o.isCorrect);
+    }
+    return null;
+  });
+  const [selectedAnatoliaOpt, setSelectedAnatoliaOpt] = useState<number | null>(() => {
+    if (scholarState.isFullyEvaluated) {
+      return shuffledAnatoliaOptions.findIndex((o) => o.isCorrect);
+    }
+    return null;
+  });
+  const [selectedEvidenceOpt, setSelectedEvidenceOpt] = useState<number | null>(() => {
+    if (scholarState.isFullyEvaluated) {
+      return shuffledEvidenceOptions.findIndex((o) => o.isCorrect);
+    }
+    return null;
+  });
   const [evidenceFeedback, setEvidenceFeedback] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
 
   // Unlocked clues helper
@@ -67,7 +109,7 @@ export const CuratorModal: React.FC<CuratorModalProps> = ({
     if (selectedGuessId === scholar.id) {
       setGuessFeedback({
         type: 'success',
-        message: 'Tebrikler! Portredeki şahsiyetin kimliğini başarıyla belirlediniz.'
+        message: 'Tebrikler! Portredeki âlimin kimliğini başarıyla belirlediniz.'
       });
       onUpdateState(scholar.id, { isNameGuessed: true });
       setTimeout(() => {
@@ -77,7 +119,7 @@ export const CuratorModal: React.FC<CuratorModalProps> = ({
     } else {
       setGuessFeedback({
         type: 'error',
-        message: 'Bir kanıtı daha inceleyiniz. Portredeki şahsiyetin eseri ve düşüncesi sizlere ipucu vermektedir.'
+        message: 'Kanıtları bir daha inceleyiniz. Portredeki âlimin eseri ve düşüncesi sizlere ipucu vermektedir.'
       });
     }
   };
@@ -86,11 +128,12 @@ export const CuratorModal: React.FC<CuratorModalProps> = ({
   const handleVerifyEvidence = () => {
     if (selectedEvidenceOpt === null) return;
 
-    const opt = scholar.evidenceOptions[selectedEvidenceOpt];
-    if (opt.isCorrect) {
+    const opt = shuffledEvidenceOptions[selectedEvidenceOpt];
+    if (opt?.isCorrect) {
+      setHasCompletedLocal(true);
       setEvidenceFeedback({
         type: 'success',
-        message: 'Değerlendirmenizi somut bir kanıtla başarıyla desteklediniz.'
+        message: 'Tebrikler! Değerlendirmeniz somut kanıtla başarıyla doğrulandı. "İnceleme Tamamlandı" butonuna basarak salona dönebilirsiniz.'
       });
       onUpdateState(scholar.id, {
         isFullyEvaluated: true,
@@ -99,13 +142,10 @@ export const CuratorModal: React.FC<CuratorModalProps> = ({
         evidenceAnswerIndex: selectedEvidenceOpt,
         evaluatedAt: new Date().toISOString()
       });
-      timerRef.current = setTimeout(() => {
-        onClose();
-      }, 1400);
     } else {
       setEvidenceFeedback({
         type: 'error',
-        message: opt.explanation || 'Bu seçenek mümkün görünüyor; ancak gösterilen kanıt bunu yeterince desteklemiyor. İpuçlarını tekrar inceleyebilirsiniz.'
+        message: opt?.explanation || 'Bu seçenek çıkarımınızı desteklememektedir. İlgili âlimin birincil kaynak niteliğindeki eserlerini ve kayıtlarını inceleyiniz.'
       });
     }
   };
@@ -135,10 +175,7 @@ export const CuratorModal: React.FC<CuratorModalProps> = ({
             {/* Top Identity Card above portrait */}
             {isGuessed && (
               <div className="w-full p-3 sm:p-3.5 bg-gradient-to-r from-[#0f766e] via-[#0d9488] to-[#0284c7] text-white border border-[#0d9488]/30 rounded-2xl text-center shadow-md">
-                <span className="block text-[11px] font-serif uppercase tracking-[0.2em] text-[#ccfbf1] font-bold">
-                  {scholar.field}
-                </span>
-                <h3 className="font-serif font-bold text-white text-base sm:text-lg mt-0.5 drop-shadow-xs">
+                <h3 className="font-serif font-bold text-white text-base sm:text-lg drop-shadow-xs">
                   {scholar.name}
                 </h3>
                 <span className="block text-xs font-serif text-[#e6fffa]/85 mt-0.5">
@@ -189,7 +226,7 @@ export const CuratorModal: React.FC<CuratorModalProps> = ({
                               onClick={() => handleUnlockClue(clue.id)}
                               className="px-3.5 py-1.5 text-xs font-serif font-semibold text-white bg-gradient-to-r from-[#0d9488] to-[#0284c7] hover:from-[#0f766e] hover:to-[#0369a1] rounded-xl shadow transition-all transform active:scale-95 shadow-teal-700/20"
                             >
-                              İpucunu Aç
+                              Göster
                             </button>
                           )}
                         </div>
@@ -238,16 +275,16 @@ export const CuratorModal: React.FC<CuratorModalProps> = ({
               <div className="space-y-4">
                 <div className="bg-[#f0fdfa] border border-[#0d9488]/30 rounded-2xl p-4">
                   <h4 className="font-serif font-bold text-base text-[#0f766e]">
-                    Bu portredeki şahsiyet kimdir?
+                    Bu portredeki âlim kimdir?
                   </h4>
                   <p className="text-xs text-slate-600 mt-1">
-                    İncelediğiniz ipuçlarına dayanarak 9 büyük şahsiyet arasından doğru olanı seçiniz.
+                    İncelediğiniz kanıtlara dayanarak 9 büyük âlim arasından doğru olanı belirleyiniz.
                   </p>
                 </div>
 
                 {/* 9 candidate scholars grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-                  {SCHOLARS_DATA.map((candidate) => {
+                  {shuffledCandidates.map((candidate) => {
                     const isSelected = selectedGuessId === candidate.id;
                     return (
                       <button
@@ -256,18 +293,15 @@ export const CuratorModal: React.FC<CuratorModalProps> = ({
                           setSelectedGuessId(candidate.id);
                           setGuessFeedback(null);
                         }}
-                        className={`p-3 sm:p-3.5 text-left rounded-2xl border transition-all text-xs font-serif flex flex-col justify-center group ${
+                        className={`p-3.5 sm:p-4 text-center rounded-2xl border transition-all font-serif flex items-center justify-center min-h-[56px] group ${
                           isSelected
                             ? 'bg-[#e0f2f1] border-2 border-[#0d9488] text-[#0f766e] shadow-md ring-2 ring-[#0d9488]/30'
                             : 'bg-white border-2 border-[#0d9488]/20 text-[#0f2933] hover:border-[#0d9488] hover:bg-[#f0fdfa] shadow-xs'
                         }`}
                       >
-                        <div className="font-bold text-sm sm:text-base text-[#0f2933] truncate group-hover:text-[#0d9488] transition-colors">
+                        <span className="font-bold text-sm sm:text-base text-[#0f2933] truncate group-hover:text-[#0d9488] transition-colors">
                           {candidate.name}
-                        </div>
-                        <div className="text-[11px] sm:text-xs text-[#0d9488] truncate mt-0.5">
-                          {candidate.field}
-                        </div>
+                        </span>
                       </button>
                     );
                   })}
@@ -375,10 +409,10 @@ export const CuratorModal: React.FC<CuratorModalProps> = ({
                   </div>
                 </div>
 
-                {/* 3. Alt: Alıntı / Şahsiyetin Sözü */}
+                {/* 3. Alt: Alıntı / Özlü Söz */}
                 {scholar.quote && (
-                  <div className="p-3.5 sm:p-4 rounded-2xl bg-[#f0fdfa] border border-[#0d9488]/30 shadow-xs text-center">
-                    <p className="font-manuscript text-base sm:text-lg lg:text-xl font-medium italic text-[#0f766e] leading-relaxed">
+                  <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-amber-50/90 via-[#fffdf5] to-amber-50/90 border-2 border-amber-300/80 shadow-xs text-center">
+                    <p className="font-serif text-base sm:text-lg lg:text-xl font-bold italic text-[#78350f] leading-relaxed">
                       "{scholar.quote}"
                     </p>
                   </div>
@@ -409,35 +443,71 @@ export const CuratorModal: React.FC<CuratorModalProps> = ({
                     </h4>
                   </div>
 
-                  <div className="space-y-1 px-1">
-                    {scholar.curatorOptions.map((opt, idx) => {
+                  <div className="space-y-1.5 px-1">
+                    {shuffledCuratorOptions.map((opt, idx) => {
                       const isSelected = selectedCuratorOpt === idx;
+                      const isCorrect = opt.isCorrect;
                       return (
                         <button
                           key={idx}
                           onClick={() => {
                             setSelectedCuratorOpt(idx);
                           }}
-                          className={`group w-full py-2 px-3 sm:py-2.5 sm:px-3 text-left rounded-xl transition-all flex items-start gap-3 text-xs sm:text-sm ${
+                          className={`group w-full py-2.5 px-3.5 text-left rounded-xl transition-all flex items-start gap-3 text-xs sm:text-sm border ${
                             isSelected
-                              ? 'bg-[#0d9488]/15 text-[#0f766e] font-semibold'
-                              : 'text-slate-700 hover:bg-slate-100/80 hover:text-slate-900'
+                              ? isCorrect
+                                ? 'bg-emerald-50 border-2 border-emerald-500 text-emerald-950 font-semibold shadow-xs'
+                                : 'bg-rose-50 border-2 border-rose-400 text-rose-950 font-medium shadow-xs'
+                              : 'bg-white/80 border-slate-200 text-slate-700 hover:bg-slate-100/80 hover:text-slate-900'
                           }`}
                         >
                           <span
                             className={`w-5 h-5 rounded-full flex items-center justify-center font-serif text-[11px] font-bold shrink-0 transition-colors mt-0.5 ${
                               isSelected
-                                ? 'bg-[#0d9488] text-white shadow-xs'
+                                ? isCorrect
+                                  ? 'bg-emerald-600 text-white shadow-xs'
+                                  : 'bg-rose-600 text-white shadow-xs'
                                 : 'bg-slate-100 border border-slate-300 text-slate-600 group-hover:bg-slate-200 group-hover:text-[#0f766e]'
                             }`}
                           >
-                            {isSelected ? '✓' : String.fromCharCode(65 + idx)}
+                            {isSelected ? (isCorrect ? '✓' : '✕') : String.fromCharCode(65 + idx)}
                           </span>
-                          <span className="leading-relaxed">{opt}</span>
+                          <span className="leading-relaxed">{opt.text}</span>
                         </button>
                       );
                     })}
                   </div>
+
+                  {/* Feedback for Question 1 */}
+                  <AnimatePresence>
+                    {selectedCuratorOpt !== null && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -4 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -4 }}
+                        className={`p-3 sm:p-3.5 rounded-xl border text-xs sm:text-sm leading-relaxed flex items-start space-x-2.5 shadow-xs ${
+                          shuffledCuratorOptions[selectedCuratorOpt]?.isCorrect
+                            ? 'bg-emerald-50 border-2 border-emerald-400 text-emerald-950'
+                            : 'bg-rose-50 border-2 border-rose-400 text-rose-950'
+                        }`}
+                      >
+                        <span
+                          className={`w-5 h-5 rounded-full flex items-center justify-center font-bold text-xs shrink-0 mt-0.5 ${
+                            shuffledCuratorOptions[selectedCuratorOpt]?.isCorrect
+                              ? 'bg-emerald-200 text-emerald-800'
+                              : 'bg-rose-200 text-rose-800'
+                          }`}
+                        >
+                          {shuffledCuratorOptions[selectedCuratorOpt]?.isCorrect ? '✓' : '!'}
+                        </span>
+                        <div>
+                          <p className="font-medium">
+                            {shuffledCuratorOptions[selectedCuratorOpt]?.feedback}
+                          </p>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
 
                 {/* Question 2: Anatolia Connection */}
@@ -448,39 +518,75 @@ export const CuratorModal: React.FC<CuratorModalProps> = ({
                     </h4>
                   </div>
 
-                  <div className="space-y-1 px-1">
-                    {scholar.anatoliaOptions.map((opt, idx) => {
+                  <div className="space-y-1.5 px-1">
+                    {shuffledAnatoliaOptions.map((opt, idx) => {
                       const isSelected = selectedAnatoliaOpt === idx;
+                      const isCorrect = opt.isCorrect;
                       return (
                         <button
                           key={idx}
                           onClick={() => {
                             setSelectedAnatoliaOpt(idx);
                           }}
-                          className={`group w-full py-2 px-3 sm:py-2.5 sm:px-3 text-left rounded-xl transition-all flex items-start gap-3 text-xs sm:text-sm ${
+                          className={`group w-full py-2.5 px-3.5 text-left rounded-xl transition-all flex items-start gap-3 text-xs sm:text-sm border ${
                             isSelected
-                              ? 'bg-[#0d9488]/15 text-[#0f766e] font-semibold'
-                              : 'text-slate-700 hover:bg-slate-100/80 hover:text-slate-900'
+                              ? isCorrect
+                                ? 'bg-emerald-50 border-2 border-emerald-500 text-emerald-950 font-semibold shadow-xs'
+                                : 'bg-rose-50 border-2 border-rose-400 text-rose-950 font-medium shadow-xs'
+                              : 'bg-white/80 border-slate-200 text-slate-700 hover:bg-slate-100/80 hover:text-slate-900'
                           }`}
                         >
                           <span
                             className={`w-5 h-5 rounded-full flex items-center justify-center font-serif text-[11px] font-bold shrink-0 transition-colors mt-0.5 ${
                               isSelected
-                                ? 'bg-[#0d9488] text-white shadow-xs'
+                                ? isCorrect
+                                  ? 'bg-emerald-600 text-white shadow-xs'
+                                  : 'bg-rose-600 text-white shadow-xs'
                                 : 'bg-slate-100 border border-slate-300 text-slate-600 group-hover:bg-slate-200 group-hover:text-[#0f766e]'
                             }`}
                           >
-                            {isSelected ? '✓' : String.fromCharCode(65 + idx)}
+                            {isSelected ? (isCorrect ? '✓' : '✕') : String.fromCharCode(65 + idx)}
                           </span>
-                          <span className="leading-relaxed">{opt}</span>
+                          <span className="leading-relaxed">{opt.text}</span>
                         </button>
                       );
                     })}
                   </div>
+
+                  {/* Feedback for Question 2 */}
+                  <AnimatePresence>
+                    {selectedAnatoliaOpt !== null && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -4 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -4 }}
+                        className={`p-3 sm:p-3.5 rounded-xl border text-xs sm:text-sm leading-relaxed flex items-start space-x-2.5 shadow-xs ${
+                          shuffledAnatoliaOptions[selectedAnatoliaOpt]?.isCorrect
+                            ? 'bg-emerald-50 border-2 border-emerald-400 text-emerald-950'
+                            : 'bg-rose-50 border-2 border-rose-400 text-rose-950'
+                        }`}
+                      >
+                        <span
+                          className={`w-5 h-5 rounded-full flex items-center justify-center font-bold text-xs shrink-0 mt-0.5 ${
+                            shuffledAnatoliaOptions[selectedAnatoliaOpt]?.isCorrect
+                              ? 'bg-emerald-200 text-emerald-800'
+                              : 'bg-rose-200 text-rose-800'
+                          }`}
+                        >
+                          {shuffledAnatoliaOptions[selectedAnatoliaOpt]?.isCorrect ? '✓' : '!'}
+                        </span>
+                        <div>
+                          <p className="font-medium">
+                            {shuffledAnatoliaOptions[selectedAnatoliaOpt]?.feedback}
+                          </p>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
 
                 {/* Proceed to Evidence Stage */}
-                <div className="flex justify-between items-center pt-2">
+                <div className="flex flex-col sm:flex-row justify-between items-center gap-3 pt-2">
                   <button
                     onClick={() => setActiveTab('knowledge')}
                     className="text-xs text-[#0f766e] hover:text-[#115e59] font-medium"
@@ -488,26 +594,42 @@ export const CuratorModal: React.FC<CuratorModalProps> = ({
                     ← Bilgi Kartlarına Dön
                   </button>
 
-                  <button
-                    disabled={selectedCuratorOpt === null || selectedAnatoliaOpt === null}
-                    onClick={() => {
-                      onUpdateState(scholar.id, {
-                        curatorAnswerIndex: selectedCuratorOpt ?? undefined,
-                        anatoliaAnswerIndex: selectedAnatoliaOpt ?? undefined
-                      });
-                      setActiveTab('evidence');
-                    }}
-                    className="px-6 py-2.5 bg-gradient-to-r from-[#0d9488] to-[#0284c7] hover:from-[#0f766e] hover:to-[#0369a1] disabled:opacity-40 disabled:cursor-not-allowed text-white font-serif font-bold text-sm rounded-xl shadow-lg transition-all shadow-teal-700/20"
-                  >
-                    Kanıtını Göster Aşamasına Geçiniz
-                  </button>
+                  <div className="flex items-center gap-3">
+                    {selectedCuratorOpt !== null &&
+                      selectedAnatoliaOpt !== null &&
+                      (!shuffledCuratorOptions[selectedCuratorOpt]?.isCorrect ||
+                        !shuffledAnatoliaOptions[selectedAnatoliaOpt]?.isCorrect) && (
+                        <span className="text-xs text-rose-700 font-medium">
+                          Her iki soruda da doğru çıkarıma ulaşarak ilerleyiniz.
+                        </span>
+                      )}
+
+                    <button
+                      disabled={
+                        selectedCuratorOpt === null ||
+                        selectedAnatoliaOpt === null ||
+                        !shuffledCuratorOptions[selectedCuratorOpt]?.isCorrect ||
+                        !shuffledAnatoliaOptions[selectedAnatoliaOpt]?.isCorrect
+                      }
+                      onClick={() => {
+                        onUpdateState(scholar.id, {
+                          curatorAnswerIndex: selectedCuratorOpt ?? undefined,
+                          anatoliaAnswerIndex: selectedAnatoliaOpt ?? undefined
+                        });
+                        setActiveTab('evidence');
+                      }}
+                      className="px-6 py-2.5 bg-gradient-to-r from-[#0d9488] to-[#0284c7] hover:from-[#0f766e] hover:to-[#0369a1] disabled:opacity-40 disabled:cursor-not-allowed text-white font-serif font-bold text-sm rounded-xl shadow-lg transition-all shadow-teal-700/20"
+                    >
+                      Kanıtını Göster Aşamasına Geçiniz
+                    </button>
+                  </div>
                 </div>
               </div>
             )}
 
             {/* TAB 5: EVIDENCE ("KANITINI GÖSTER") */}
             {activeTab === 'evidence' && isGuessed && (
-              <div className="space-y-2.5">
+              <div className="space-y-3">
                 <div className="bg-[#f0f9ff]/80 border-2 border-[#0284c7]/45 rounded-2xl p-3.5 sm:p-4 shadow-xs">
                   <h4 className="text-base sm:text-lg font-serif font-bold text-[#0f766e] leading-snug">
                     {scholar.evidenceQuestion}
@@ -515,30 +637,45 @@ export const CuratorModal: React.FC<CuratorModalProps> = ({
                 </div>
 
                 {/* Evidence options */}
-                <div className="space-y-1 px-1">
-                  {scholar.evidenceOptions.map((opt, idx) => {
+                <div className="space-y-1.5 px-1">
+                  {shuffledEvidenceOptions.map((opt, idx) => {
                     const isSelected = selectedEvidenceOpt === idx;
                     return (
                       <button
                         key={idx}
+                        disabled={isComplete}
                         onClick={() => {
                           setSelectedEvidenceOpt(idx);
-                          setEvidenceFeedback(null);
+                          if (opt.isCorrect) {
+                            setEvidenceFeedback({
+                              type: 'success',
+                              message: 'Tebrikler! Değerlendirmenizi somut bir kanıtla desteklediniz. İncelemeyi onaylamak için "Kanıtı Doğrula ve Değerlendir" butonuna basınız.'
+                            });
+                          } else {
+                            setEvidenceFeedback({
+                              type: 'error',
+                              message: opt.explanation || 'Bu seçenek çıkarımınızı desteklememektedir. İlgili âlimin birincil kaynak niteliğindeki eserlerini ve kayıtlarını inceleyiniz.'
+                            });
+                          }
                         }}
-                        className={`group w-full py-2 px-3 sm:py-2.5 sm:px-3 text-left rounded-xl transition-all flex items-start gap-3 text-xs sm:text-sm ${
+                        className={`group w-full py-2.5 px-3.5 text-left rounded-xl transition-all flex items-start gap-3 text-xs sm:text-sm border ${
                           isSelected
-                            ? 'bg-[#0d9488]/15 text-[#0f766e] font-semibold'
-                            : 'text-slate-700 hover:bg-slate-100/80 hover:text-slate-900'
+                            ? opt.isCorrect
+                              ? 'bg-emerald-50 border-2 border-emerald-500 text-emerald-950 font-semibold shadow-xs'
+                              : 'bg-rose-50 border-2 border-rose-400 text-rose-950 font-medium shadow-xs'
+                            : 'bg-white/80 border-slate-200 text-slate-700 hover:bg-slate-100/80 hover:text-slate-900'
                         }`}
                       >
                         <span
                           className={`w-5 h-5 rounded-full flex items-center justify-center font-serif text-[11px] font-bold shrink-0 transition-colors mt-0.5 ${
                             isSelected
-                              ? 'bg-[#0d9488] text-white shadow-xs'
+                              ? opt.isCorrect
+                                ? 'bg-emerald-600 text-white shadow-xs'
+                                : 'bg-rose-600 text-white shadow-xs'
                               : 'bg-slate-100 border border-slate-300 text-slate-600 group-hover:bg-slate-200 group-hover:text-[#0f766e]'
                           }`}
                         >
-                          {String.fromCharCode(65 + idx)}
+                          {isSelected ? (opt.isCorrect ? '✓' : '✕') : String.fromCharCode(65 + idx)}
                         </span>
                         <span className="leading-relaxed">{opt.text}</span>
                       </button>
@@ -550,21 +687,26 @@ export const CuratorModal: React.FC<CuratorModalProps> = ({
                 <AnimatePresence>
                   {evidenceFeedback && (
                     <motion.div
-                      initial={{ opacity: 0, y: -6 }}
+                      initial={{ opacity: 0, y: -4 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className={`p-3.5 rounded-2xl border text-xs flex items-start space-x-2.5 ${
+                      exit={{ opacity: 0, y: -4 }}
+                      className={`p-3.5 rounded-xl border text-xs sm:text-sm leading-relaxed flex items-start space-x-2.5 shadow-xs ${
                         evidenceFeedback.type === 'success'
-                          ? 'bg-emerald-50 border-2 border-emerald-500 text-emerald-950'
-                          : 'bg-rose-50 border-2 border-rose-500 text-rose-950'
+                          ? 'bg-emerald-50 border-2 border-emerald-400 text-emerald-950'
+                          : 'bg-rose-50 border-2 border-rose-400 text-rose-950'
                       }`}
                     >
-                      {evidenceFeedback.type === 'success' ? (
-                        <span className="w-5 h-5 rounded-full bg-emerald-200 text-emerald-800 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">✓</span>
-                      ) : (
-                        <span className="w-5 h-5 rounded-full bg-rose-200 text-rose-800 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">!</span>
-                      )}
+                      <span
+                        className={`w-5 h-5 rounded-full flex items-center justify-center font-bold text-xs shrink-0 mt-0.5 ${
+                          evidenceFeedback.type === 'success'
+                            ? 'bg-emerald-200 text-emerald-800'
+                            : 'bg-rose-200 text-rose-800'
+                        }`}
+                      >
+                        {evidenceFeedback.type === 'success' ? '✓' : '!'}
+                      </span>
                       <div>
-                        <p className="font-bold">{evidenceFeedback.message}</p>
+                        <p className="font-medium">{evidenceFeedback.message}</p>
                       </div>
                     </motion.div>
                   )}
@@ -580,21 +722,18 @@ export const CuratorModal: React.FC<CuratorModalProps> = ({
                   </button>
 
                   <div className="flex items-center space-x-2">
-                    {!isFullyEvaluated ? (
+                    {!isComplete ? (
                       <button
-                        disabled={selectedEvidenceOpt === null}
+                        disabled={selectedEvidenceOpt === null || !shuffledEvidenceOptions[selectedEvidenceOpt]?.isCorrect}
                         onClick={handleVerifyEvidence}
                         className="px-6 py-2.5 bg-gradient-to-r from-[#0d9488] to-[#0284c7] hover:from-[#0f766e] hover:to-[#0369a1] disabled:opacity-40 disabled:cursor-not-allowed text-white font-serif font-bold text-sm rounded-xl shadow-lg transition-all shadow-teal-700/20"
                       >
-                        Kanıtı Doğrula & Değerlendir
+                        Kanıtı Doğrula ve Değerlendir
                       </button>
                     ) : (
                       <button
-                        onClick={() => {
-                          if (timerRef.current) clearTimeout(timerRef.current);
-                          onClose();
-                        }}
-                        className="px-6 py-2.5 bg-gradient-to-r from-emerald-600 to-teal-700 text-white font-serif font-bold text-sm rounded-xl shadow-lg hover:from-emerald-500 hover:to-teal-600 transition-all"
+                        onClick={onClose}
+                        className="px-7 py-2.5 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 text-white font-serif font-bold text-sm rounded-xl shadow-lg transition-all shadow-emerald-700/20"
                       >
                         İnceleme Tamamlandı
                       </button>

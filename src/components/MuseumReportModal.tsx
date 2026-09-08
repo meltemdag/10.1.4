@@ -18,13 +18,13 @@ export const MuseumReportModal: React.FC<MuseumReportModalProps> = ({
   const dimensionsSummary = [
     {
       id: 'bilim',
-      label: 'Bilim & Mühendislik',
+      label: 'Bilim ve Mühendislik',
       color: 'bg-cyan-50 text-cyan-900 border-cyan-300',
       scholars: ['Cezeri', 'Ömer Hayyam', 'Kaşgarlı Mahmud']
     },
     {
       id: 'egitim',
-      label: 'Eğitim & İrfan Mektebi',
+      label: 'Eğitim ve İrfan Mektebi',
       color: 'bg-amber-50 text-amber-900 border-amber-300',
       scholars: ['Ahmed Yesevi', 'Hacı Bektaş Veli', 'İbnülarabi', 'Mevlana']
     },
@@ -36,25 +36,25 @@ export const MuseumReportModal: React.FC<MuseumReportModalProps> = ({
     },
     {
       id: 'sanat',
-      label: 'Sanat & Edebiyat',
+      label: 'Sanat ve Edebiyat',
       color: 'bg-emerald-50 text-emerald-900 border-emerald-300',
       scholars: ['Yunus Emre', 'Mevlana', 'Ömer Hayyam']
     },
     {
       id: 'dusunce',
-      label: 'Felsefe & Düşünce',
+      label: 'Felsefe ve Düşünce',
       color: 'bg-teal-50 text-teal-900 border-teal-300',
       scholars: ['İbnülarabi', 'Mevlana', 'Ömer Hayyam', 'Hacı Bektaş Veli']
     },
     {
       id: 'islamlasma',
-      label: 'İslamlaşma & Tasavvufi Hoşgörü',
+      label: 'İslamlaşma ve Tasavvufi Hoşgörü',
       color: 'bg-teal-50 text-teal-900 border-teal-300',
       scholars: ['Ahmed Yesevi', 'Hacı Bektaş Veli', 'Mevlana', 'İbnülarabi']
     },
     {
       id: 'anadoluTurklesmesi',
-      label: 'Anadolu’nun Türkleşmesi & Vatanlaşması',
+      label: 'Anadolu’nun Türkleşmesi ve Vatanlaşması',
       color: 'bg-blue-50 text-blue-900 border-blue-300',
       scholars: ['Yunus Emre', 'İbni Bibi', 'Hacı Bektaş Veli', 'Ahmed Yesevi', 'Kaşgarlı Mahmud']
     }
@@ -96,7 +96,7 @@ export const MuseumReportModal: React.FC<MuseumReportModalProps> = ({
               onClick={onClose}
               className="px-3.5 py-1.5 text-xs font-serif bg-white text-[#0f766e] font-bold rounded-xl hover:bg-slate-100 shadow transition-colors"
             >
-              Müzeyi İnceleyiniz
+              Portre Alanına Dönünüz
             </button>
           </div>
         </div>
@@ -116,7 +116,7 @@ export const MuseumReportModal: React.FC<MuseumReportModalProps> = ({
           {/* Selected 3 Scholars & Reasons */}
           <div className="space-y-3">
             <h3 className="font-serif font-bold text-sm text-[#0f766e] uppercase tracking-wider print:text-black">
-              Anadolu’nun Dönüşümünde Belirlediğiniz 3 Öncü Şahsiyet ve Gerekçeleriniz
+              Anadolu’nun Dönüşümünde Belirlediğiniz 3 Öncü İlim İnsanı ve Gerekçeleriniz
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
               {submission.selectedScholarIds.map((id) => {
@@ -138,10 +138,7 @@ export const MuseumReportModal: React.FC<MuseumReportModalProps> = ({
                         />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <span className="text-[10px] font-serif uppercase tracking-wider text-[#0d9488] font-bold">
-                          {scholar.field}
-                        </span>
-                        <h4 className="font-serif font-bold text-base text-[#0f2933] mt-0.5 print:text-black truncate">
+                        <h4 className="font-serif font-bold text-base text-[#0f2933] print:text-black truncate">
                           {scholar.name}
                         </h4>
                         <span className="block text-xs text-slate-500 mt-0.5 print:text-gray-600 truncate">
@@ -188,7 +185,7 @@ export const MuseumReportModal: React.FC<MuseumReportModalProps> = ({
           <div className="p-4 rounded-2xl bg-[#f0fdfa] border border-[#0d9488]/30 flex flex-col sm:flex-row items-center justify-between gap-4 print:bg-white print:border-gray-300">
             <div>
               <h4 className="font-serif font-bold text-sm text-[#0f2933] print:text-black">
-                Tüm Şahsiyetler Başarıyla İncelendi ve Değerlendirildi
+                Tüm İlim İnsanları Başarıyla İncelendi ve Değerlendirildi
               </h4>
               <p className="text-xs text-slate-600 mt-1 max-w-xl print:text-gray-600">
                 Türkistan’dan Türkiye’ye uzanan bilim, dil, felsefe ve kültür mirasımızın Anadolu’nun vatanlaşma ve İslamlaşma sürecindeki rolünü birincil kanıtlarla başarıyla değerlendirdiniz.

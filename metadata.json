@@ -1,6 +1,6 @@
 {
-  "name": "Türk-İslam Medeniyetinin İzinde: Sanal Müze",
-  "description": "TAR.10.1.4 kazanımına yönelik Türk-İslam medeniyetinin 9 öncü şahsiyetini keşfedip kanıtlarla değerlendiren interaktif sanal müze.",
+  "name": "Türk-İslam Medeniyetinin İzinde: Portre Alanı",
+  "description": "TAR.10.1.4 kazanımına yönelik Türk-İslam medeniyetinin 9 öncü âlimini keşfedip kanıtlarla değerlendiren etkileşimli portre alanı.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

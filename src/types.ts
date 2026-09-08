@@ -28,10 +28,12 @@ export interface ScholarData {
   // Evaluation questions
   curatorQuestion: string;
   curatorOptions: string[];
+  curatorFeedbacks?: string[];
   correctCuratorOption: number;
   
   anatoliaQuestion: string;
   anatoliaOptions: string[];
+  anatoliaFeedbacks?: string[];
   correctAnatoliaOption: number;
   
   evidenceQuestion: string;

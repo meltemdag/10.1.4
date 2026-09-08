@@ -41,13 +41,25 @@ export const SCHOLARS_DATA: ScholarData[] = [
       'Askerî savunma taktikleri ve kuşatma makineleri geliştirmesi',
       'Yabancı dillerden felsefe metinlerini saray için çevirmesi'
     ],
+    curatorFeedbacks: [
+      'Gökbilim ve takvim çalışmaları fen bilimcilerinin alanına girmektedir. Bu mutasavvıfın halkın anlayacağı dille tasavvufi ve ahlaki şiirler (hikmetler) yazdığını dikkate alınız.',
+      'Tebrikler! Dîvân-ı Hikmet ile Türkçeyi bir irfan dili haline getirme başarısını doğru tespit ettiniz.',
+      'Bu mutasavvıf bir ordu komutanı veya askerî mühendis değildir; manevi irşat ve ahlak eğitimiyle tanınan bir mutasavvıftır. İpuçlarındaki eser ve düşünce boyutlarını inceleyiniz.',
+      'Bu mutasavvıf yabancı diller veya saray çevresi yerine, halkın konuştuğu ana dili öncelemiştir. İpuçlarında yer alan dil tercihini gözden geçiriniz.'
+    ],
     correctCuratorOption: 1,
     anatoliaQuestion: 'Bu katkının Anadolu’nun imar ve iskân sürecindeki rolünü nasıl değerlendirirsiniz?',
     anatoliaOptions: [
-      'Bizans sarayı ile ticari antlaşmalar imzalanmasını sağlaması',
+      'Doğu Roma sarayı ile ticari antlaşmalar imzalanmasını sağlaması',
       'Anadolu Selçuklu ordusunun deniz donanmasını yönetmesi',
       'Horasan erenlerinin Anadolu’da kurdukları tekkelerle göçmen boyları kaynaştırıp toplumsal dayanışmayı güçlendirmesi',
       'Yalnızca saray çevresinde edebi sohbetler düzenlemesi'
+    ],
+    anatoliaFeedbacks: [
+      'Bu mutasavvıf doğrudan diplomatik antlaşmalar yürüten bir devlet adamı değildir. Yetiştirdiği dervişlerin göç hareketlerindeki rolünü düşününüz.',
+      'Türkistan sahasında yaşayan bu mutasavvıfın denizcilik veya ordu komutanlığı faaliyeti bulunmamaktadır. Anadolu’da kurulan tekkelerin toplumsal etkisini değerlendiriniz.',
+      'Tebrikler! Yesevi dervişlerinin Anadolu’nun yurt edinilmesindeki kaynaştırıcı rolünü doğru tespit ettiniz.',
+      'Yesevilik hareketi saray çevreleriyle sınırlı kalmamış, geniş halk kitlelerini ve köyleri kucaklamıştır. Toplumsal kaynaşma boyutuna odaklanınız.'
     ],
     correctAnatoliaOption: 2,
     evidenceQuestion: 'Bu çıkarıma ulaşmanızı sağlayan kanıt hangisidir?',
@@ -55,7 +67,7 @@ export const SCHOLARS_DATA: ScholarData[] = [
       {
         text: 'Anadolu’da bizzat siyasi fermanlar yayımlayarak ordu komutanlığı yapması',
         isCorrect: false,
-        explanation: 'Ahmed Yesevi devlet başkanı veya askerî komutan değil, Türkistan’da yaşamış manevi bir önder ve düşünürdür.'
+        explanation: 'Bu mutasavvıfın devlet yöneticisi veya askerî komutan olmadığını, manevi bir önder olduğunu hatırlayınız.'
       },
       {
         text: 'Dîvân-ı Hikmet’in yalın Türkçesi ve yetiştirdiği Horasan erenlerinin Anadolu’daki zaviye faaliyetleri',
@@ -65,12 +77,12 @@ export const SCHOLARS_DATA: ScholarData[] = [
       {
         text: 'Haçlı ordularına karşı deniz savaşları yönettiğini gösteren kronikler',
         isCorrect: false,
-        explanation: 'Ahmed Yesevi Orta Asya sahasında yaşamıştır; deniz komutanlığı söz konusu değildir.'
+        explanation: 'Bu mutasavvıf Türkistan sahasında yaşamış olup deniz savaşlarıyla ilgisi bulunmamaktadır. Eser ve kültür kayıtlarını inceleyiniz.'
       },
       {
         text: 'Sadece Arapça terimler kullanarak seçkin zümreye hitap etmesi',
         isCorrect: false,
-        explanation: 'Ahmed Yesevi Arapça veya Farsça yerine halkın ana dili olan Türkçeyi tercih etmiştir.'
+        explanation: 'Bu mutasavvıfın eserlerinde halkın konuştuğu ana dili tercih ettiğini belirten ipucunu anımsayınız.'
       }
     ],
     dimensions: {
@@ -125,13 +137,25 @@ export const SCHOLARS_DATA: ScholarData[] = [
       'Devletler hukuku ilkelerini belirleyen diplomatik fermanlar yazması',
       'Ordunun süvari taktiklerini anlatan nizamnameler kaleme alması'
     ],
+    curatorFeedbacks: [
+      'Tebrikler! Dîvânu Lugâti’t-Türk’ün dünya kültür ve dil mirasına sağladığı eşsiz katkıyı doğru belirlediniz.',
+      'Rasathane ve yıldız cetvelleri gökbilimcilerin çalışma alanıdır. Bu bilim insanının dil, kültür ve söz varlığı üzerine yaptığı araştırmaları düşününüz.',
+      'Bu bilim insanı bir diplomat veya kanun koyucu değildir. Türk boylarını gezerek derlediği kelime ve atasözlerini hatırlayınız.',
+      'Bu bilim insanı askerî talimnameler yazmamış; dilimizin zenginliğini kanıtlayan ansiklopedik bir sözlük kaleme almıştır. İpuçlarını inceleyiniz.'
+    ],
     correctCuratorOption: 0,
     anatoliaQuestion: 'Bu çalışmanın Anadolu sahasındaki yansıması nasıl açıklanabilir?',
     anatoliaOptions: [
       'Anadolu maden yataklarının haritasını çıkararak işletmeye açması',
-      'Bizans sınırında yeni taş surlar inşa ettirmesi',
+      'Doğu Roma sınırında yeni taş surlar inşa ettirmesi',
       'Yalnızca sarayda kullanılan yabancı yazı dilini zorunlu kılması',
       'Anadolu’ya yerleşen farklı boyların ortak dil, edebiyat ve atasözleri etrafında kültürel birliklerini korumalarını sağlaması'
+    ],
+    anatoliaFeedbacks: [
+      'Bu bilim insanı madencilik veya jeoloji alanında çalışmamıştır. Türk boylarının ortak kültürel ve dilsel mirasına odaklanınız.',
+      'Bu bilim insanı kale veya sur inşa eden bir mimar ya da asker değildir. Dilin ve ortak hafızanın toplum üzerindeki etkisini değerlendiriniz.',
+      'Bu bilim insanı yabancı dilleri zorunlu kılmamış; tam aksine Türkçenin büyüklüğünü ve zenginliğini savunmuştur. Dil birliği boyutunu düşününüz.',
+      'Tebrikler! Ortak dil ve atasözlerinin Anadolu’daki Türkmen boyları arasındaki kültürel birleştirici etkisini doğru tespit ettiniz.'
     ],
     correctAnatoliaOption: 3,
     evidenceQuestion: 'Bu çıkarıma ulaşmanızı sağlayan kanıt hangisidir?',
@@ -139,12 +163,12 @@ export const SCHOLARS_DATA: ScholarData[] = [
       {
         text: 'Malazgirt Meydan Muharebesi’nde süvari komutanı olarak görev yapması',
         isCorrect: false,
-        explanation: 'Kaşgarlı Mahmud askerî komutan değil, Karahanlı soyundan gelen büyük bir dilbilimcidir.'
+        explanation: 'Bu bilim insanının askerî bir komutan değil, büyük bir dilbilimci ve kültür araştırmacısı olduğunu hatırlayınız.'
       },
       {
         text: 'Konya medreselerinde bizzat yöneticilik yaptığına dair vakfiyeler',
         isCorrect: false,
-        explanation: 'Kaşgarlı Mahmud eserini Bağdat’ta tamamlamış olup Anadolu’da medrese yöneticiliği yapmamıştır.'
+        explanation: 'Bu bilim insanı eserini Bağdat’ta halifeye sunmuştur; Anadolu’da medrese yöneticiliği yapmamıştır. Eserine ait somut belgelere odaklanınız.'
       },
       {
         text: 'Dîvânu Lugâti’t-Türk’teki boy lehçeleri derlemeleri, atasözleri ve ilk Türk dünyası haritası',
@@ -154,7 +178,7 @@ export const SCHOLARS_DATA: ScholarData[] = [
       {
         text: 'Yalnızca aşk konulu şiirler içeren bağımsız bir divan yazmış olması',
         isCorrect: false,
-        explanation: 'Dîvânu Lugâti’t-Türk bir şiir mecmuası değil, ilk Türkçe sözlük ve kapsamlı bir kültür ansiklopedisidir.'
+        explanation: 'Bu bilim insanının eserinin bir şiir mecmuası değil, ilk Türkçe sözlük ve kapsamlı bir kültür ansiklopedisi olduğunu anımsayınız.'
       }
     ],
     dimensions: {
@@ -209,6 +233,12 @@ export const SCHOLARS_DATA: ScholarData[] = [
       'Üçüncü dereceden denklemleri geometrik yolla çözmesi ve hassas güneş takvimi (Celali) geliştirmesi',
       'Kervanların güvenliği için posta teşkilatı kurması'
     ],
+    curatorFeedbacks: [
+      'Bu bilim insanı rubaileriyle tanınmakla birlikte, dünya bilim mirasına matematik ve gökbilim alanında çığır açıcı yenilikler kazandırmıştır. İpuçlarını inceleyiniz.',
+      'Bu bilim insanı askerî silah teknolojisi değil; kuramsal matematik, cebir ve takvim bilimi üzerine yoğunlaşmıştır. İpuçlarındaki cebirsel yöntemleri anımsayınız.',
+      'Tebrikler! Kübik denklemleri koni kesitleriyle çözme ve Celali Takvimi’ni geliştirme katkısını başarıyla belirlediniz.',
+      'Posta teşkilatı devlet idaresinin bir kurumudur. Bu bilim insanının rasathane ve cebir risalelerindeki buluşlarını göz önünde bulundurunuz.'
+    ],
     correctCuratorOption: 2,
     anatoliaQuestion: 'Bu bilimsel birikimin Selçuklu coğrafyasına etkisi nasıl özetlenebilir?',
     anatoliaOptions: [
@@ -216,6 +246,12 @@ export const SCHOLARS_DATA: ScholarData[] = [
       'İsfahan’daki rasathane ve matematik birikiminin Anadolu medreselerindeki akli bilim eğitimini zenginleştirmesi',
       'Yalnızca saray çevresinde takvim kullanımına izin verilmesi',
       'Edebi metinlerin fen bilimlerinden tamamen ayrıştırılması'
+    ],
+    anatoliaFeedbacks: [
+      'Bilimsel gelişmeler üretimi durdurmaz; tam tersine takvim tarımsal zamanlamayı düzenler. Medreselerdeki akli ilimler eğitimine odaklanınız.',
+      'Tebrikler! Selçuklu rasathane geleneğinin Anadolu medreselerindeki matematik ve astronomi müfredatına katkısını doğru tespit ettiniz.',
+      'Geliştirilen takvim ve bilimsel bilgiler medreseler yoluyla geniş bir eğitim ağına yayılmıştır. Eğitime olan katkıyı değerlendiriniz.',
+      'Dönemin bilim insanları hem edebiyat hem de fen bilimlerini bir arada yürütmüştür. Medreselerdeki akli bilimler etkisini düşününüz.'
     ],
     correctAnatoliaOption: 1,
     evidenceQuestion: 'Bu çıkarıma ulaşmanızı sağlayan kanıt hangisidir?',
@@ -226,19 +262,19 @@ export const SCHOLARS_DATA: ScholarData[] = [
         explanation: 'Hayyam’ın kübik denklemleri koni kesitleriyle çözdüğü Cebir Risalesi ve hazırladığı Zîc-i Melikşahî bilim tarihindeki somut belgelerdir.'
       },
       {
-        text: 'Bizans İmparatorluğu ile imzalanan askeri ittifak metinleri',
+        text: 'Doğu Roma İmparatorluğu ile imzalanan askeri ittifak metinleri',
         isCorrect: false,
-        explanation: 'Ömer Hayyam bir devlet başkanı veya elçi değil, bilgin ve matematikçidir.'
+        explanation: 'Bu bilim insanının bir devlet başkanı veya elçi değil, bilgin ve matematikçi olduğunu hatırlayınız.'
       },
       {
         text: 'Mısır Piramitlerinin onarımında mühendis olarak çalıştığına dair iddialar',
         isCorrect: false,
-        explanation: 'Hayyam Selçuklu coğrafyasında (Nişabur, Semerkant, İsfahan) yaşamış ve araştırmalarını burada yürütmüştür.'
+        explanation: 'Bu bilim insanının araştırmalarını Selçuklu coğrafyasında (Nişabur, Semerkant, İsfahan) yürüttüğünü anımsayınız.'
       },
       {
         text: 'Sadece eğlence ve meclis şiirleri yazan bir saray şairi olduğunu belirten dedikodular',
         isCorrect: false,
-        explanation: 'Hayyam çağının en yetkin matematik, astronomi ve felsefe bilginlerinden biridir.'
+        explanation: 'Bu bilim insanının fen ve felsefe alanındaki derin yetkinliğini ve rasathane çalışmalarını göz önünde bulundurunuz.'
       }
     ],
     dimensions: {
@@ -293,6 +329,12 @@ export const SCHOLARS_DATA: ScholarData[] = [
       'Yalnızca madenleri altına dönüştürme deneyleri yapması',
       'Krank mili ve otomatlar tasarlayarak sibernetik ve robotik biliminin temellerini kurması'
     ],
+    curatorFeedbacks: [
+      'Kanunnameler hukukçuların ve vezirlerin alanıdır. Bu bilim insanının mekanik aletler ve su gücüyle çalışan makineler tasarladığını hatırlayınız.',
+      'Deniz haritacılığı coğrafyacıların ve kaptanların alanıdır. Bu başmühendisin otomatlar ve saat düzenekleri geliştirdiğini göz önünde bulundurunuz.',
+      'Bu bilim insanı simyacı değil; dönme hareketini doğrusal harekete çeviren mekanizmaları kuran bir başmühendistir. İpuçlarını inceleyiniz.',
+      'Tebrikler! Krank mili ve programlanabilir otomatlarla sibernetik ve robotik biliminin temellerini atışını doğru tespit ettiniz.'
+    ],
     correctCuratorOption: 3,
     anatoliaQuestion: 'Cezeri’nin Anadolu topraklarındaki bu çalışmaları neyin göstergesidir?',
     anatoliaOptions: [
@@ -301,23 +343,29 @@ export const SCHOLARS_DATA: ScholarData[] = [
       'Mekanik araçların halk arasında yasaklandığını',
       'Bilimin yalnızca yabancı ülkelerden kopyalandığını'
     ],
+    anatoliaFeedbacks: [
+      'Tebrikler! Artuklular döneminde Diyarbakır ve Cizre’nin ileri mühendislik merkezi konumunda olduğunu başarıyla belirlediniz.',
+      'Gelişmiş su kaldırma araçları ve makineler aksine üretime ve zanaata katkı sağlamıştır. Anadolu’nun teknolojik düzeyini değerlendiriniz.',
+      'Makinelerin yasaklanması söz konusu değildir; sultanların ve toplumun hizmetine sunulmuştur. Bilimsel öncülük boyutunu düşününüz.',
+      'Cezeri özgün tasarımlar ve dünyada ilk kez uygulanan krank mili sistemleri geliştirmiştir. Öncü niteliğini dikkate alınız.'
+    ],
     correctAnatoliaOption: 0,
     evidenceQuestion: 'Bu çıkarıma ulaşmanızı sağlayan kanıt hangisidir?',
     evidenceOptions: [
       {
         text: 'Diyarbakır surlarını tek başına taş bloklarla ördüğü rivayeti',
         isCorrect: false,
-        explanation: 'Cezeri inşaat ustası değil; sarayın başmühendisi, tasarımcısı ve mucididir.'
+        explanation: 'Bu bilim insanının bir inşaat ustası değil; sarayın başmühendisi, tasarımcısı ve mucidi olduğunu hatırlayınız.'
       },
       {
         text: 'Haçlı ordularına karşı deniz birliklerini yönettiğine dair belgeler',
         isCorrect: false,
-        explanation: 'Cezeri askerî bir kumandan değil; sarayda çalışan bir mekanik bilginidir.'
+        explanation: 'Bu bilim insanının askerî bir komutan değil; mekanik biliminin öncüsü olduğunu anımsayınız.'
       },
       {
         text: 'Yalnızca masal ve destan türünde hikâyeler yazmış olması',
         isCorrect: false,
-        explanation: 'Cezeri’nin eseri masal değil; bizzat imal edilen araçların ayrıntılı teknik çizimlerini içeren bilimsel kitaptır.'
+        explanation: 'Bu bilim insanının eserinin masal değil; bizzat imal edilen araçların ayrıntılı teknik çizimlerini içeren bilimsel bir kitap olduğunu göz önünde bulundurunuz.'
       },
       {
         text: 'Kitab-ül Hiyel’deki elliden fazla aracın ayrıntılı teknik çizimleri ve Fil Su Saati tasarımı',
@@ -377,6 +425,12 @@ export const SCHOLARS_DATA: ScholarData[] = [
       'Yalnızca temel dört işlem hesaplamaları yapması',
       'Kale kuşatmaları için mancınıklar geliştirmesi'
     ],
+    curatorFeedbacks: [
+      'Gümrük vergileri maliye ve ticaret memurlarının alanıdır. Bu mutasavvıfın bilgi, varlık ve tefekkür üzerine derin eserler verdiğini hatırlayınız.',
+      'Tebrikler! İlim ve tefekkürü düşünce dünyasının merkezine alan irfani yaklaşımı doğru belirlediniz.',
+      'Dört işlem temel aritmetiktir; oysa bu mutasavvıf felsefe, metafizik ve varlık anlayışı üzerine yüzlerce eser vermiştir. İpuçlarını inceleyiniz.',
+      'Mancınık askerî bir silahtır. Bu mutasavvıfın fikirleri, talebeleri ve yazılı mirasını göz önünde bulundurunuz.'
+    ],
     correctCuratorOption: 1,
     anatoliaQuestion: 'İbnülarabi’nin Anadolu’daki faaliyetlerinin kültürel etkisi nasıl açıklanabilir?',
     anatoliaOptions: [
@@ -385,13 +439,19 @@ export const SCHOLARS_DATA: ScholarData[] = [
       'Malatya ve Konya’da talebeler yetiştirip yöneticilere tavsiyelerde bulunarak Anadolu düşünce hayatına derinlik kazandırması',
       'Yalnızca yabancı tüccarlara imtiyaz verilmesini savunması'
     ],
+    anatoliaFeedbacks: [
+      'Bu mutasavvıf vergi toplayan bir maliyeci değildir. Malatya ve Konya’da verdiği derslerin düşünce hayatına etkisini düşününüz.',
+      'Bilgiye hayat diyen bir mutasavvıf kütüphaneleri kapatmaz; tam aksine ilmi meclisleri zenginleştirmiştir. İlim geleneğine odaklanınız.',
+      'Tebrikler! Sadreddin Konevi gibi talebeleriyle Anadolu ve Osmanlı tefekkürüne kazandırdığı derinliği başarıyla tespit ettiniz.',
+      'Bu mutasavvıf ticaret politikalarıyla değil, ahlak, ilim ve yöneticilere adalet tavsiyeleriyle öne çıkmıştır. Düşünce boyutunu değerlendiriniz.'
+    ],
     correctAnatoliaOption: 2,
     evidenceQuestion: 'Bu çıkarıma ulaşmanızı sağlayan kanıt hangisidir?',
     evidenceOptions: [
       {
         text: 'Roma Kolezyumu’nda felsefe dersleri verdiğine dair Batı kayıtları',
         isCorrect: false,
-        explanation: 'İbnülarabi Endülüs, Kuzey Afrika, Hicaz, Şam ve Anadolu’da (Malatya-Konya) bulunmuştur.'
+        explanation: 'Bu mutasavvıfın Endülüs, Hicaz, Şam ve Anadolu’da (Malatya-Konya) dersler verdiğini hatırlayınız.'
       },
       {
         text: 'Fütûhât-ı Mekkiyye’deki ilim tahlilleri ve Selçuklu sultanlarıyla mektuplaşarak Konya’da talebe yetiştirmesi',
@@ -401,12 +461,12 @@ export const SCHOLARS_DATA: ScholarData[] = [
       {
         text: 'Selçuklu ordusunun başkumandanı sıfatıyla sefere katılması',
         isCorrect: false,
-        explanation: 'İbnülarabi devlet yöneticisi veya asker değil; din âlimi ve düşünürdür.'
+        explanation: 'Bu mutasavvıfın askerî kumandan değil, manevi bir önder ve mütefekkir olduğunu göz önünde bulundurunuz.'
       },
       {
         text: 'Sadece İspanyolca eserler verip Doğu dillerini reddetmesi',
         isCorrect: false,
-        explanation: 'Eserlerini dönemin ortak ilim dili olan Arapça ile yazmış ve İslam coğrafyasında dersler vermiştir.'
+        explanation: 'Bu mutasavvıfın eserlerini dönemin ortak ilim dili olan Arapça ile yazdığını ve İslam coğrafyasında dersler verdiğini anımsayınız.'
       }
     ],
     dimensions: {
@@ -453,7 +513,7 @@ export const SCHOLARS_DATA: ScholarData[] = [
     contribution: 'İyiliği, adaleti, hoşgörüyü ve birlik çağrısını şiir ve hikmetle dile getirerek tüm insanlığı kucaklayan evrensel bir ahlak mirası bırakmıştır.',
     anatoliaImpact: 'Türkiye Selçuklu Devleti’nin Moğol istilasıyla zayıfladığı zorlu devirde Anadolu halkına moral, umut ve dayanma gücü vermiş; Konya’yı manevi ve kültürel bir çekim merkezine dönüştürmüştür.',
     geography: 'Horasan’ın Belh şehrinde doğdu; ailesiyle Anadolu’ya göç ederek Türkiye Selçuklularının başkenti Konya’ya yerleşti.',
-    influence: 'Moğol istilası ve Haçlı seferleriyle sarsılan Anadolu halkına manevi birlik ve direnç aşıladı; hoşgörü ve sevgi anlayışıyla 2007 yılında UNESCO tarafından dünya çapında anıldı.',
+    influence: 'Moğol istilası ve Haçlı saldırılarıyla sarsılan Anadolu halkına manevi birlik ve direnç aşıladı; hoşgörü ve sevgi anlayışıyla 2007 yılında UNESCO tarafından dünya çapında anıldı.',
     curatorQuestion: 'Mevlana’nın evrensel kültür mirasına yaptığı en temel katkı nedir?',
     curatorOptions: [
       'Yalnızca saray protokol kurallarını düzenlemesi',
@@ -461,13 +521,25 @@ export const SCHOLARS_DATA: ScholarData[] = [
       'Kur’an ve sünnete dayalı birlik, sevgi ve hoşgörü çağrısıyla insanları ortak ahlaki değerlerde buluşturması',
       'Ticari kervan filoları donatması'
     ],
+    curatorFeedbacks: [
+      'Bu mutasavvıfın etkisi dar bir saray protokolüyle sınırlı kalmamış; her kesimden insanı kucaklayan evrensel bir ahlak ve hoşgörü çağrısı yapmıştır. İpuçlarındaki düşünce ve eser boyutlarını yeniden inceleyiniz.',
+      'Bu mutasavvıf fen ve matematik alanından ziyade; edebiyat, şiir ve tasavvufi düşünce yoluyla gönüllere hitap etmiştir. Eserlerini ve manevi mirasını dikkate alınız.',
+      'Tebrikler! Mesnevi ve Divan-ı Kebir ile insanlığı ortak ahlaki değerlerde buluşturma misyonunu doğru tespit ettiniz.',
+      'Bu mutasavvıf tüccarlık değil; insanları manevi ve ahlaki değerler etrafında birleştiren bir fikir önderliği yapmıştır. İpuçlarındaki sevgi ve hoşgörü anlayışına odaklanınız.'
+    ],
     correctCuratorOption: 2,
     anatoliaQuestion: 'Mevlana’nın öğretilerinin Anadolu toplumuna sağladığı en belirgin katkı nedir?',
     anatoliaOptions: [
       'Moğol istilasının yarattığı siyasi ve sosyal buhran döneminde halka umut ve dayanma gücü aşılayarak toplumsal birliği koruması',
       'Şehirlerin etrafına hendekler kazdırarak ticareti durdurması',
       'Yalnızca Konya halkıyla iletişim kurup diğer şehirleri ihmal etmesi',
-      'Bizans tüccarlarının dükkânlarını kapatmasını emretmesi'
+      'Doğu Roma tüccarlarının dükkânlarını kapatmasını emretmesi'
+    ],
+    anatoliaFeedbacks: [
+      'Tebrikler! Buhran döneminde Anadolu halkına aşıladığı moral ve dayanma gücünü başarıyla belirlediniz.',
+      'Bu mutasavvıf askerî savunma inşaatları yapmak yerine, insanları manevi açıdan güçlendirip teselli etmiştir. Topluma nasıl moral verdiğini düşününüz.',
+      'Bu mutasavvıfın fikirleri ve eserleri sadece Konya ile sınırlı kalmamış, tüm Anadolu ve İslam dünyasında derin yankı uyandırmıştır. Ulaştığı geniş etki alanını değerlendiriniz.',
+      'Bu bilge hiçbir zaman ticari yasaklamalar getiren bir yönetici olmamış; ayrım gözetmeksizin herkese adalet ve hoşgörüyle yaklaşmıştır. Sevgi merkezli yaklaşımını göz önünde bulundurunuz.'
     ],
     correctAnatoliaOption: 0,
     evidenceQuestion: 'Bu çıkarıma ulaşmanızı sağlayan kanıt hangisidir?',
@@ -475,22 +547,22 @@ export const SCHOLARS_DATA: ScholarData[] = [
       {
         text: 'Moğol ordusuna karşı kılıç kuşanıp süvari ordusu komutanlığı yapması',
         isCorrect: false,
-        explanation: 'Mevlana askerî kumandan değil; halka öğüt veren manevi bir rehber ve bilgindir.'
+        explanation: 'Bu mutasavvıfın kılıçla savaşan bir askerî komutan değil; sözleri ve eserleriyle gönülleri fetheden manevi bir bilge olduğunu hatırlayınız.'
       },
       {
         text: 'Yalnızca astronomi rasathaneleri inşa ettirdiğini gösteren belgeler',
         isCorrect: false,
-        explanation: 'Mevlana rasathane kurucusu değil, tasavvufi ve edebi eserleriyle tanınan bir mutasavvıftır.'
+        explanation: 'Gözlemevi kayıtlarının gökbilimcilerine ait olduğunu; bu mutasavvıfın ise tasavvufi eserleriyle tanındığını anımsayınız.'
       },
       {
         text: 'Mesnevi’deki birleştirici öğütler, Şeb-i Arûs anlayışı ve 2007 UNESCO Mevlana ve Hoşgörü Yılı kararı',
         isCorrect: true,
-        explanation: 'Eserlerindeki pergel metaforu, iyilik öğütleri ve UNESCO’nun 2007 kararı bu evrensel etkinin somut kanıtıdır.'
+        explanation: 'Mesnevi’deki öğütler ve UNESCO’nun 2007 kararı bu evrensel etkinin somut kanıtıdır.'
       },
       {
         text: 'Anadolu dışındaki coğrafyaları hiç tanımayan yerel bir köylü olması',
         isCorrect: false,
-        explanation: 'Mevlana Belh’ten Şam’a ve Konya’ya kadar geniş bir coğrafyayı görmüş evrensel bir düşünürdür.'
+        explanation: 'Bu mutasavvıfın Belh’ten Şam’a ve Anadolu’ya uzanan geniş bir medeniyet havzasında yetişmiş evrensel bir mütefekkir olduğunu göz önünde bulundurunuz.'
       }
     ],
     dimensions: {
@@ -543,7 +615,13 @@ export const SCHOLARS_DATA: ScholarData[] = [
       'Sevgi, hoşgörü, edep ve kardeşlik anlayışıyla farklı toplumsal kesimleri barış içinde birleştirmesi',
       'Deniz aşırı baharat ticareti filoları kurması',
       'Astrolojik burç yorumları kaleme alması',
-      'Bizans kiliselerinin mimari restorasyonunu yapması'
+      'Doğu Roma kiliselerinin mimari restorasyonunu yapması'
+    ],
+    curatorFeedbacks: [
+      'Tebrikler! "Bir olalım, iri olalım, diri olalım" anlayışıyla toplumsal barış ve kardeşliğe yaptığı katkıyı başarıyla belirlediniz.',
+      'Baharat filoları deniz tüccarlarının alanıdır. Bu mutasavvıfın Nevşehir Karahöyük’teki zaviyesinde halkı irşat ettiğini hatırlayınız.',
+      'Bu mutasavvıf astrolojiyle değil; ahlaki olgunlaşma, nefis terbiyesi ve edep ilkeleriyle topluma rehberlik etmiştir. İpuçlarındaki ilkeleri inceleyiniz.',
+      'Bu bilge bir mimar veya restoratör değildir. Türkmen boylarını kardeşlik ve ahlak ilkeleri etrafında birleştiren rolünü dikkate alınız.'
     ],
     correctCuratorOption: 0,
     anatoliaQuestion: 'Hacı Bektaş Veli’nin öğretileri Anadolu ve Balkan coğrafyasını nasıl etkilemiştir?',
@@ -553,13 +631,19 @@ export const SCHOLARS_DATA: ScholarData[] = [
       'Yalnızca yabancı dilde eğitim verilmesini şart koşması',
       'Yetiştirdiği dervişlerin Anadolu ve Balkanlarda barış ve adalet temelinde iskân hareketlerine rehberlik etmesi'
     ],
+    anatoliaFeedbacks: [
+      'Bu mutasavvıfın öğretileri ayrılıkları değil; tam tersine birlik, dayanışma ve kaynaşmayı esas almıştır. Hoşgörü ve barış boyutunu düşününüz.',
+      'Karahöyük’teki tekke yerleşik hayatı, tarımı ve üretimi teşvik etmiştir. Toplumsal düzen ve iskân hareketlerine etkisini değerlendiriniz.',
+      'Bu mutasavvıf halkın anlayacağı dille ve Türkçe nefeslerle irşat yapmıştır. Dervişlerin kültür ve iskân faaliyetlerine odaklanınız.',
+      'Tebrikler! Dervişlerin Anadolu ve Balkanların iskân ve imar sürecindeki öncü rolünü doğru tespit ettiniz.'
+    ],
     correctAnatoliaOption: 3,
     evidenceQuestion: 'Bu çıkarıma ulaşmanızı sağlayan kanıt hangisidir?',
     evidenceOptions: [
       {
         text: 'Haçlı krallarıyla imzaladığı ticari senetler',
         isCorrect: false,
-        explanation: 'Hacı Bektaş Veli tüccar veya diplomat değil, Anadolu’da halkı irşat eden manevi bir mürşittir.'
+        explanation: 'Bu mutasavvıfın tüccar veya diplomat değil, Anadolu’da halkı irşat eden manevi bir mürşit olduğunu anımsayınız.'
       },
       {
         text: 'Makâlât’taki edep ve ahlak ilkeleri, Suluca Karahöyük zaviyesi ve Vilâyetnâme’deki tarihi kayıtlar',
@@ -569,12 +653,12 @@ export const SCHOLARS_DATA: ScholarData[] = [
       {
         text: 'Moğol ordusuna vergi toplayıcılığı yaptığı iddiaları',
         isCorrect: false,
-        explanation: 'Hacı Bektaş Veli Moğol baskısına karşı halkın maneviyatını ve dayanışmasını korumuştur.'
+        explanation: 'Bu bilgenin vergi memuru değil; Moğol baskısı altındaki halkın maneviyatını ve birliğini koruyan bir önder olduğunu hatırlayınız.'
       },
       {
         text: 'Sadece maden ocaklarında çalışarak münzevi bir hayat yaşaması',
         isCorrect: false,
-        explanation: 'Hacı Bektaş Veli zaviyesiyle binlerce derviş yetiştirmiş ve toplumsal hayatın merkezinde yer almıştır.'
+        explanation: 'Bu mutasavvıfın inzivaya çekilmediğini; zaviyesi ve yetiştirdiği talebeleriyle toplumsal hayatın merkezinde yer aldığını göz önünde bulundurunuz.'
       }
     ],
     dimensions: {
@@ -629,6 +713,12 @@ export const SCHOLARS_DATA: ScholarData[] = [
       'Yabancı tüccarlara para basma imtiyazı vermesi',
       'Türkçeyi yüksek bir sevgi, hoşgörü ve ahlak dili yaparak halkın gönlünde ölümsüzleştirmesi'
     ],
+    curatorFeedbacks: [
+      'Askerî savunma ordu komutanlarının görevidir. Bu mutasavvıfın duru Türkçeyle yazılan tasavvufi şiirlerini hatırlayınız.',
+      'Bu mutasavvıf saray bürokrasisine değil; Anadolu halkına ve gönüllere hitap eden bir halk ozanıdır. Edebi mirasını inceleyiniz.',
+      'Para basma devlet hükümdarlarının yetkisindedir. Bu mutasavvıfın dil ve gönül dünyamıza yaptığı katkıyı düşününüz.',
+      'Tebrikler! Türkçeyi duru ve zengin bir irfan dili olarak halkın vicdanında kökleştirme başarısını doğru tespit ettiniz.'
+    ],
     correctCuratorOption: 3,
     anatoliaQuestion: 'Yunus Emre’nin Türkçeyi tercih etmesinin Anadolu medeniyeti açısından sonucu nedir?',
     anatoliaOptions: [
@@ -636,6 +726,12 @@ export const SCHOLARS_DATA: ScholarData[] = [
       'Anadolu’da Türkçenin yazı, edebiyat ve kültür dili olarak kökleşip kalıcı hale gelmesi',
       'Yalnızca Latince metinlerin okunmasının zorunlu tutulması',
       'Kervansaraylardaki konaklama ücretlerinin belirlenmesi'
+    ],
+    anatoliaFeedbacks: [
+      'Tam aksine sade Türkçe sayesinde şiirler köy köy, dilden dile dolaşmıştır. Dilin kalıcılığı ve kültürel birlik boyutunu düşününüz.',
+      'Tebrikler! Türkçenin Anadolu’da edebiyat ve kültür dili olarak kalıcı hale geldiğini doğru belirlediniz.',
+      'Anadolu’da Latince zorunluluğu hiçbir zaman olmamıştır. Yunus Emre ana dilimiz olan Türkçeyi yüceltmiştir. Millî kültür boyutuna odaklanınız.',
+      'Konaklama ücretleri ticari nizamlardır. Bu bilge şairin dil, edebiyat ve ortak kimliğin korunmasına etkisini değerlendiriniz.'
     ],
     correctAnatoliaOption: 1,
     evidenceQuestion: 'Bu çıkarıma ulaşmanızı sağlayan kanıt hangisidir?',
@@ -648,17 +744,17 @@ export const SCHOLARS_DATA: ScholarData[] = [
       {
         text: 'Karamanoğlu Mehmet Bey’in ordusunda süvari yüzbaşılığı yaptığı iddiası',
         isCorrect: false,
-        explanation: 'Yunus Emre asker değil; Taptuk Emre ocağında yetişmiş bir gönül şairi ve derviştir.'
+        explanation: 'Bu mutasavvıfın asker değil; Taptuk Emre ocağında yetişmiş bir gönül şairi ve derviş olduğunu hatırlayınız.'
       },
       {
         text: 'İstanbul surlarını kuşatan donanmada kaptanlık yapması',
         isCorrect: false,
-        explanation: 'Yunus Emre Sakarya ve Orta Anadolu havzasında yaşamıştır; deniz donanmasıyla ilgisi yoktur.'
+        explanation: 'Bu mutasavvıfın Sakarya ve Orta Anadolu havzasında yaşadığını; deniz donanmasıyla ilgisi bulunmadığını anımsayınız.'
       },
       {
         text: 'Yalnızca mekanik saatler ve usturlaplar imal etmiş olması',
         isCorrect: false,
-        explanation: 'Yunus Emre fen araçları üreticisi değil, edebiyatımızın ve tasavvufumuzun en büyük ozanlarındandır.'
+        explanation: 'Bu bilge şairin fen araçları üreticisi değil, edebiyatımızın ve tasavvufumuzun en büyük ozanlarından olduğunu göz önünde bulundurunuz.'
       }
     ],
     dimensions: {
@@ -713,6 +809,12 @@ export const SCHOLARS_DATA: ScholarData[] = [
       'Top döküm ocakları kurarak kale kuşatması planlaması',
       'Atlas Okyanusu kıyı haritasını çizmesi'
     ],
+    curatorFeedbacks: [
+      'Eczacılık tıp ve şifa hekimlerinin alanıdır. Bu bilim insanının Türkiye Selçuklu divanında devlet tarihçisi olduğunu hatırlayınız.',
+      'Tebrikler! el-Evâmirü’l-Alâiyye (Selçuknâme) eseriyle Selçuklu idari ve sosyal hafızasını belgeleme başarısını doğru tespit ettiniz.',
+      'Bu bilim insanı bir topçu komutanı değil; devletin arşiv belgelerini ve olaylarını kaydeden bir müelliftir. Eserini dikkate alınız.',
+      'Okyanus haritaları coğrafyacı denizcilerin alanıdır. Bu bilim insanının Selçuklu sarayındaki idari ve hukuki kayıtlarına odaklanınız.'
+    ],
     correctCuratorOption: 1,
     anatoliaQuestion: 'Bu eserde anlatılan adalet ve vakıf nizamı Anadolu için ne anlam ifade eder?',
     anatoliaOptions: [
@@ -721,23 +823,29 @@ export const SCHOLARS_DATA: ScholarData[] = [
       'Devletin tüccarı ve mazlumu koruyan adalet anlayışıyla Anadolu’yu güvenli bir ticaret ve yerleşim yurduna dönüştürdüğünü belgelemesi',
       'Tarih yazıcılığının tamamen hayal ürünü olduğunu iddia etmesi'
     ],
+    anatoliaFeedbacks: [
+      'Tam tersine eserde Antalya’nın fethi ve tüccarların mallarının devlet güvencesine alınması anlatılır. Ticari güven boyutunu düşününüz.',
+      'Eserde yalnızca savaşlar değil; vakıflar, ikta toprak düzeni, imar ve dadgâh adalet divanları ayrıntıyla anlatılır. Sosyal nizamı inceleyiniz.',
+      'Tebrikler! Selçuklu adalet teşkilatı ve devlet sigortasının Anadolu’yu güvenli bir yurda dönüştürdüğü tespitini başarıyla yaptınız.',
+      'Bu bilim insanı bizzat şahit olduğu olayları ve resmî devlet evraklarını kaynak alarak gerçekçi bir yöntem izlemiştir. Belgeye dayalı anlatımı dikkate alınız.'
+    ],
     correctAnatoliaOption: 2,
     evidenceQuestion: 'Bu çıkarıma ulaşmanızı sağlayan kanıt hangisidir?',
     evidenceOptions: [
       {
         text: 'Yalnızca masal ve efsanelerden oluşan hayali bir destan yazmış olması',
         isCorrect: false,
-        explanation: 'İbni Bibi masalcı değil; Selçuklu divanında görev yapmış, resmî belgelere ve tanıklıklara dayanan bir vakanüvistir.'
+        explanation: 'Bu bilim insanının masalcı değil; Selçuklu divanında görev yapmış, resmî belgelere dayanan bir vakanüvis olduğunu hatırlayınız.'
       },
       {
         text: 'Haçlı ordularının komutanı olarak Anadolu’ya sefer düzenlemesi',
         isCorrect: false,
-        explanation: 'İbni Bibi Selçuklu bürokratı ve müellifidir; Haçlılarla komutanlık ilişkisi yoktur.'
+        explanation: 'Bu bilim insanının Selçuklu bürokratı ve müellifi olduğunu; Haçlı ordularıyla komutanlık ilişkisi bulunmadığını anımsayınız.'
       },
       {
         text: 'Roma İmparatoru Jüstinyen’in hayatını anlatan Latince bir risale yazması',
         isCorrect: false,
-        explanation: 'İbni Bibi Türkiye Selçuklularının XIII. yüzyıldaki tarihini anlatan Selçuknâme’yi yazmıştır.'
+        explanation: 'Bu bilim insanının Türkiye Selçuklularının XIII. yüzyıldaki tarihini anlatan Selçuknâme’yi kaleme aldığını göz önünde bulundurunuz.'
       },
       {
         text: 'el-Evâmirü’l-Alâiyye’de yer alan ikta-mülk toprak kayıtları, Antalya fethi ve dadgâh adalet divanı anlatımları',

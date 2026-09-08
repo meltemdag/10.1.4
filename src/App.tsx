@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { ScholarData, DiscoveredScholarState, FinalCuratorSubmission } from './types';
 import { SCHOLARS_DATA } from './data/scholarsData';
+import { shuffleArray } from './utils/shuffle';
 import { MuseumHeader } from './components/MuseumHeader';
 import { MuseumHall } from './components/MuseumHall';
 import { CuratorModal } from './components/CuratorModal';
@@ -26,6 +27,11 @@ const createInitialScholarsState = (): Record<string, DiscoveredScholarState> =>
 };
 
 export default function App() {
+  // Randomize scholars order every time the activity / page is loaded
+  const [shuffledScholars, setShuffledScholars] = useState<ScholarData[]>(() => {
+    return shuffleArray(SCHOLARS_DATA);
+  });
+
   // Main collection state - always starts fresh with all 9 portraits closed on page refresh
   const [scholarsState, setScholarsState] = useState<Record<string, DiscoveredScholarState>>(() => {
     if (typeof window !== 'undefined') {
@@ -80,9 +86,9 @@ export default function App() {
   // Open next unevaluated scholar in sequence
   const handleOpenNextScholar = () => {
     if (!selectedScholar) return;
-    const currentIdx = SCHOLARS_DATA.findIndex((s) => s.id === selectedScholar.id);
-    const nextIdx = (currentIdx + 1) % SCHOLARS_DATA.length;
-    setSelectedScholar(SCHOLARS_DATA[nextIdx]);
+    const currentIdx = shuffledScholars.findIndex((s) => s.id === selectedScholar.id);
+    const nextIdx = (currentIdx + 1) % shuffledScholars.length;
+    setSelectedScholar(shuffledScholars[nextIdx]);
   };
 
   // Close welcome modal
@@ -107,6 +113,7 @@ export default function App() {
     setSubmission(null);
     setShowReport(false);
     setShowFinalMission(false);
+    setShuffledScholars(shuffleArray(SCHOLARS_DATA));
     if (typeof window !== 'undefined') {
       localStorage.removeItem(STORAGE_KEY_STATE);
       localStorage.removeItem(STORAGE_KEY_SUBMISSION);
@@ -126,6 +133,7 @@ export default function App() {
       {/* Main Museum Gallery Floor */}
       <main className="flex-1 flex flex-col relative overflow-hidden">
         <MuseumHall
+          scholars={shuffledScholars}
           scholarsState={scholarsState}
           onSelectScholar={(scholar) => setSelectedScholar(scholar)}
           onOpenFinalMission={() => setShowFinalMission(true)}
@@ -192,17 +200,10 @@ export default function App() {
               {/* Top Seljuk Turquoise Banner & Arch Accent */}
               <div className="absolute top-0 inset-x-0 h-2 bg-gradient-to-r from-[#0f766e] via-[#0d9488] to-[#0284c7]" />
 
-              <div className="flex justify-between items-start mb-4 mt-1">
-                <div className="flex items-center space-x-3">
-                  <div>
-                    <span className="text-[10px] font-serif uppercase tracking-widest text-[#0d9488] font-bold">
-                      Tarih Dersi • TAR.10.1.4
-                    </span>
-                    <h2 className="font-serif text-xl sm:text-2xl font-bold text-[#0f2933] leading-tight">
-                      Sanal Müzeye Hoş Geldiniz
-                    </h2>
-                  </div>
-                </div>
+              <div className="flex justify-between items-start mb-3 mt-1">
+                <h2 className="font-serif text-xl sm:text-2xl font-bold text-[#0f2933] leading-tight">
+                  Portre Alanına Hoş Geldiniz
+                </h2>
 
                 <button
                   onClick={handleDismissWelcome}
@@ -213,16 +214,15 @@ export default function App() {
                 </button>
               </div>
 
-              {/* Exact Mission Statement from Section 5 */}
               <div className="p-4 sm:p-5 rounded-2xl bg-[#f0fdfa] border-2 border-[#0d9488]/30 shadow-inner my-4">
-                <p className="font-serif text-base sm:text-lg italic text-[#134e4a] leading-relaxed">
-                  “Müzede 9 portre sizleri bekliyor. Her birinin kim olduğunu, hangi eser veya düşünceyle öne çıktığını keşfediniz. İsimlere bakarak değil, kanıtları inceleyerek ilerleyiniz.”
+                <p className="font-serif text-sm sm:text-base text-[#134e4a] leading-relaxed">
+                  Portre alanında yer alan 9 portreyi sırasıyla inceleyiniz. İpuçlarından hareketle âlimin kimliğini belirleyiniz; bilgi kartlarını okuyup değerlendirme sorularını ve somut kanıtları yanıtlayarak incelemenizi tamamlayınız. Tüm incelemeleri bitirdiğinizde açılacak olan kapanış görevini yerine getiriniz.
                 </p>
               </div>
 
               {/* Learning methodology badge */}
               <div className="flex items-center justify-center space-x-1.5 text-xs text-[#0f766e] font-serif py-2 border-y border-[#0d9488]/20 mb-5">
-                <span>Keşfet → İncele → Tahmin Et → Kanıtla → Değerlendir</span>
+                <span>Keşfet → İncele → Belirle → Kanıtla → Değerlendir</span>
               </div>
 
               <div className="flex justify-end">
@@ -230,7 +230,7 @@ export default function App() {
                   onClick={handleDismissWelcome}
                   className="w-full sm:w-auto px-7 py-3 bg-gradient-to-r from-[#0d9488] to-[#0284c7] hover:from-[#0f766e] hover:to-[#0369a1] text-white font-serif font-bold text-sm rounded-xl shadow-lg transition-all transform active:scale-95 shadow-teal-700/20"
                 >
-                  Müzeyi Gezmeye Başlayınız
+                  İncelemeye Başlayınız
                 </button>
               </div>
             </motion.div>

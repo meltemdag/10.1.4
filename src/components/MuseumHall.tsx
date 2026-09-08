@@ -5,6 +5,7 @@ import { SCHOLARS_DATA } from '../data/scholarsData';
 import { PortraitArt } from './PortraitArt';
 
 interface MuseumHallProps {
+  scholars: ScholarData[];
   scholarsState: Record<string, DiscoveredScholarState>;
   onSelectScholar: (scholar: ScholarData) => void;
   onOpenFinalMission: () => void;
@@ -12,6 +13,7 @@ interface MuseumHallProps {
 }
 
 export const MuseumHall: React.FC<MuseumHallProps> = ({
+  scholars,
   scholarsState,
   onSelectScholar,
   onOpenFinalMission,
@@ -28,7 +30,7 @@ export const MuseumHall: React.FC<MuseumHallProps> = ({
     const scrollLeft = container.scrollLeft;
     const itemWidth = 320; // approximate width + gap
     const newIndex = Math.round(scrollLeft / itemWidth);
-    if (newIndex >= 0 && newIndex < SCHOLARS_DATA.length && newIndex !== activeNicheIndex) {
+    if (newIndex >= 0 && newIndex < scholars.length && newIndex !== activeNicheIndex) {
       setActiveNicheIndex(newIndex);
     }
   };
@@ -50,7 +52,7 @@ export const MuseumHall: React.FC<MuseumHallProps> = ({
   };
 
   const handleNext = () => {
-    const nextIdx = Math.min(SCHOLARS_DATA.length - 1, activeNicheIndex + 1);
+    const nextIdx = Math.min(scholars.length - 1, activeNicheIndex + 1);
     scrollToNiche(nextIdx);
   };
 
@@ -94,7 +96,7 @@ export const MuseumHall: React.FC<MuseumHallProps> = ({
       <div className="relative z-10 px-4 sm:px-8 py-2.5 border-b border-[#0d9488]/20 bg-white/85 backdrop-blur-md flex items-center justify-center gap-4 shadow-xs">
         {/* Center: 9 Portals Micro Map Indicator */}
         <div className="flex items-center space-x-1.5 overflow-x-auto py-1">
-          {SCHOLARS_DATA.map((scholar, idx) => {
+          {scholars.map((scholar, idx) => {
             const state = scholarsState[scholar.id];
             const isGuessed = state?.isNameGuessed;
             const isCompleted = state?.isFullyEvaluated;
@@ -113,9 +115,9 @@ export const MuseumHall: React.FC<MuseumHallProps> = ({
                     ? 'bg-[#0284c7] border-sky-400 text-white'
                     : 'bg-white border-[#0d9488]/40 text-[#0d9488] hover:border-[#0d9488]'
                 } ${isActive ? 'ring-2 ring-[#0d9488] scale-110 shadow-sm' : ''}`}
-                title={`${scholar.number}. ${isGuessed ? scholar.name : 'Gizemli Portre'}`}
+                title={`${idx + 1}. ${isGuessed ? scholar.name : 'Gizemli Portre'}`}
               >
-                {isCompleted ? '✓' : scholar.number}
+                {isCompleted ? '✓' : idx + 1}
               </button>
             );
           })}
@@ -132,6 +134,15 @@ export const MuseumHall: React.FC<MuseumHallProps> = ({
         )}
       </div>
 
+      {/* Top Guidance Banner */}
+      <div className="relative z-10 px-4 pt-3 pb-1 max-w-4xl mx-auto w-full">
+        <div className="bg-white/90 border border-[#0d9488]/30 rounded-2xl px-4 py-2.5 sm:px-6 shadow-xs text-center backdrop-blur-xs">
+          <p className="text-xs sm:text-sm text-[#0f2933] font-serif leading-relaxed">
+            Portre alanında yer alan 9 portreyi sırasıyla inceleyiniz. İpuçlarından hareketle âlimin kimliğini belirleyiniz; bilgi kartlarını okuyup değerlendirme sorularını ve somut kanıtları yanıtlayarak incelemenizi tamamlayınız.
+          </p>
+        </div>
+      </div>
+
       {/* VIEW MODE 1: WALKTHROUGH CORRIDOR (Cinematic Pan & Stroll) */}
       {viewMode === 'walkthrough' ? (
         <div className="relative flex-1 flex flex-col justify-center overflow-hidden py-4 sm:py-8">
@@ -146,7 +157,7 @@ export const MuseumHall: React.FC<MuseumHallProps> = ({
           </button>
 
           <button
-            disabled={activeNicheIndex === SCHOLARS_DATA.length - 1}
+            disabled={activeNicheIndex === scholars.length - 1}
             onClick={handleNext}
             className="absolute right-3 sm:right-6 z-20 w-11 h-11 rounded-full bg-white/90 border border-[#0d9488]/40 text-[#0f766e] hover:bg-[#0d9488] hover:text-white disabled:opacity-30 disabled:pointer-events-none flex items-center justify-center shadow-lg transition-all"
             aria-label="Sonraki Portre"
@@ -160,7 +171,7 @@ export const MuseumHall: React.FC<MuseumHallProps> = ({
             className="flex items-center space-x-6 sm:space-x-12 px-8 sm:px-24 overflow-x-auto overflow-y-hidden py-6 scrollbar-none snap-x snap-mandatory"
             style={{ scrollBehavior: 'smooth' }}
           >
-            {SCHOLARS_DATA.map((scholar, idx) => {
+            {scholars.map((scholar, idx) => {
               const state = scholarsState[scholar.id];
               const isGuessed = state?.isNameGuessed;
               const isEvaluated = state?.isFullyEvaluated;
@@ -196,17 +207,12 @@ export const MuseumHall: React.FC<MuseumHallProps> = ({
                     {/* Walkthrough Plaque */}
                     <div className="mt-3 text-center px-1 min-h-[42px] flex flex-col justify-center">
                       {isGuessed ? (
-                        <>
-                          <span className="text-[10px] font-serif uppercase tracking-[0.2em] text-[#0d9488] font-bold">
-                            {scholar.field}
-                          </span>
-                          <h3 className="font-serif font-bold text-sm sm:text-base text-[#0f2933] mt-0.5 group-hover:text-[#0d9488] transition-colors truncate">
-                            {scholar.name}
-                          </h3>
-                        </>
+                        <h3 className="font-serif font-bold text-sm sm:text-base text-[#0f2933] mt-0.5 group-hover:text-[#0d9488] transition-colors truncate">
+                          {scholar.name}
+                        </h3>
                       ) : (
                         <h3 className="font-serif font-bold text-sm sm:text-base text-[#0f766e] group-hover:text-[#0d9488] transition-colors truncate">
-                          Kim Olduğunu Keşfet
+                          Kim Olduğumu Keşfet
                         </h3>
                       )}
                     </div>
@@ -225,7 +231,7 @@ export const MuseumHall: React.FC<MuseumHallProps> = ({
         /* VIEW MODE 2: OVERVIEW WALL (All 9 portraits on one majestic exhibition wall) */
         <div className="flex-1 overflow-y-auto p-4 sm:p-8 max-w-7xl mx-auto w-full">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {SCHOLARS_DATA.map((scholar) => {
+            {scholars.map((scholar) => {
               const state = scholarsState[scholar.id];
               const isGuessed = state?.isNameGuessed;
               const isEvaluated = state?.isFullyEvaluated;
@@ -248,17 +254,12 @@ export const MuseumHall: React.FC<MuseumHallProps> = ({
                   {/* Gallery Plaque */}
                   <div className="mt-3 text-center px-1 min-h-[42px] flex flex-col justify-center">
                     {isGuessed ? (
-                      <>
-                        <span className="text-[10px] font-serif uppercase tracking-[0.2em] text-[#0d9488] font-bold">
-                          {scholar.field}
-                        </span>
-                        <h3 className="font-serif font-bold text-sm sm:text-base text-[#0f2933] mt-0.5 group-hover:text-[#0d9488] transition-colors truncate">
-                          {scholar.name}
-                        </h3>
-                      </>
+                      <h3 className="font-serif font-bold text-sm sm:text-base text-[#0f2933] mt-0.5 group-hover:text-[#0d9488] transition-colors truncate">
+                        {scholar.name}
+                      </h3>
                     ) : (
                       <h3 className="font-serif font-bold text-sm sm:text-base text-[#0f766e] group-hover:text-[#0d9488] transition-colors truncate">
-                        Kim Olduğunu Keşfet
+                        Kim Olduğumu Keşfet
                       </h3>
                     )}
                   </div>
