@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-serif: 'Marcellus', 'Cinzel', Georgia, serif;
+    --font-display: 'Cinzel Decorative', 'Marcellus', serif;
+    --font-manuscript: 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #eef9fa;
+    color: #0f2933;
+  }
+
+  h1, h2, h3, .font-serif {
+    font-family: var(--font-serif);
+  }
+
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-manuscript {
+    font-family: var(--font-manuscript);
+  }
+}
+
+/* Seljuk Authentic Geometric Star Pattern (8-pointed Seljuk star and firuze tile geometry) */
+.bg-seljuk-pattern {
+  background-image: radial-gradient(circle at 50% 15%, rgba(13, 148, 136, 0.15) 0%, transparent 60%),
+                    radial-gradient(circle at 85% 85%, rgba(6, 182, 212, 0.12) 0%, transparent 50%),
+                    radial-gradient(circle at 15% 85%, rgba(217, 119, 6, 0.08) 0%, transparent 50%);
+}
+
+/* Seljuk Turquoise & Gold Text Gradients */
+.text-turquoise-gradient {
+  background: linear-gradient(135deg, #0f766e 0%, #0d9488 50%, #0284c7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gold-gradient {
+  background: linear-gradient(135deg, #b45309 0%, #d97706 45%, #b45309 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Custom historical museum scrollbar in Seljuk turquoise */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e2f5f7;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0d9488;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0f766e;
+}
+
