@@ -437,13 +437,11 @@ export const CuratorModal: React.FC<CuratorModalProps> = ({
               <div className="space-y-6">
                 {/* Question 1: Prime contribution */}
                 <div className="space-y-2.5">
-                  <div className="bg-[#f0f9ff]/80 border-2 border-[#0284c7]/45 rounded-2xl p-3.5 sm:p-4 shadow-xs">
-                    <h4 className="text-base sm:text-lg font-serif font-bold text-[#0f766e] leading-snug">
-                      1. {scholar.curatorQuestion}
-                    </h4>
-                  </div>
+                  <h4 className="text-base sm:text-lg font-serif font-bold text-black leading-snug px-0.5">
+                    1. {scholar.curatorQuestion}
+                  </h4>
 
-                  <div className="space-y-1.5 px-1">
+                  <div className="bg-white/80 border border-slate-200 rounded-2xl p-2 sm:p-2.5 shadow-xs space-y-1.5">
                     {shuffledCuratorOptions.map((opt, idx) => {
                       const isSelected = selectedCuratorOpt === idx;
                       const isCorrect = opt.isCorrect;
@@ -458,7 +456,7 @@ export const CuratorModal: React.FC<CuratorModalProps> = ({
                               ? isCorrect
                                 ? 'bg-emerald-50 border-2 border-emerald-500 text-emerald-950 font-semibold shadow-xs'
                                 : 'bg-rose-50 border-2 border-rose-400 text-rose-950 font-medium shadow-xs'
-                              : 'bg-white/80 border-slate-200 text-slate-700 hover:bg-slate-100/80 hover:text-slate-900'
+                              : 'bg-white border border-slate-200 text-slate-800 hover:bg-[#f0fdfa] hover:border-[#0d9488]/50 hover:text-slate-950 shadow-2xs'
                           }`}
                         >
                           <span
@@ -467,7 +465,7 @@ export const CuratorModal: React.FC<CuratorModalProps> = ({
                                 ? isCorrect
                                   ? 'bg-emerald-600 text-white shadow-xs'
                                   : 'bg-rose-600 text-white shadow-xs'
-                                : 'bg-slate-100 border border-slate-300 text-slate-600 group-hover:bg-slate-200 group-hover:text-[#0f766e]'
+                                : 'bg-slate-100 border border-slate-300 text-slate-600 group-hover:bg-[#0d9488]/15 group-hover:text-[#0f766e]'
                             }`}
                           >
                             {isSelected ? (isCorrect ? '✓' : '✕') : String.fromCharCode(65 + idx)}
@@ -511,14 +509,12 @@ export const CuratorModal: React.FC<CuratorModalProps> = ({
                 </div>
 
                 {/* Question 2: Anatolia Connection */}
-                <div className="space-y-2.5 pt-3 border-t border-[#0d9488]/20">
-                  <div className="bg-[#f0f9ff]/80 border-2 border-[#0284c7]/45 rounded-2xl p-3.5 sm:p-4 shadow-xs">
-                    <h4 className="text-base sm:text-lg font-serif font-bold text-[#0f766e] leading-snug">
-                      2. {scholar.anatoliaQuestion}
-                    </h4>
-                  </div>
+                <div className="space-y-2.5 pt-3">
+                  <h4 className="text-base sm:text-lg font-serif font-bold text-black leading-snug px-0.5">
+                    2. {scholar.anatoliaQuestion}
+                  </h4>
 
-                  <div className="space-y-1.5 px-1">
+                  <div className="bg-white/85 border border-slate-200 rounded-2xl p-2 sm:p-2.5 shadow-xs space-y-1.5">
                     {shuffledAnatoliaOptions.map((opt, idx) => {
                       const isSelected = selectedAnatoliaOpt === idx;
                       const isCorrect = opt.isCorrect;
@@ -533,7 +529,7 @@ export const CuratorModal: React.FC<CuratorModalProps> = ({
                               ? isCorrect
                                 ? 'bg-emerald-50 border-2 border-emerald-500 text-emerald-950 font-semibold shadow-xs'
                                 : 'bg-rose-50 border-2 border-rose-400 text-rose-950 font-medium shadow-xs'
-                              : 'bg-white/80 border-slate-200 text-slate-700 hover:bg-slate-100/80 hover:text-slate-900'
+                              : 'bg-white border border-slate-200 text-slate-800 hover:bg-[#f0fdfa] hover:border-[#0d9488]/50 hover:text-slate-950 shadow-2xs'
                           }`}
                         >
                           <span
@@ -542,7 +538,7 @@ export const CuratorModal: React.FC<CuratorModalProps> = ({
                                 ? isCorrect
                                   ? 'bg-emerald-600 text-white shadow-xs'
                                   : 'bg-rose-600 text-white shadow-xs'
-                                : 'bg-slate-100 border border-slate-300 text-slate-600 group-hover:bg-slate-200 group-hover:text-[#0f766e]'
+                                : 'bg-slate-100 border border-slate-300 text-slate-600 group-hover:bg-[#0d9488]/15 group-hover:text-[#0f766e]'
                             }`}
                           >
                             {isSelected ? (isCorrect ? '✓' : '✕') : String.fromCharCode(65 + idx)}
@@ -630,14 +626,12 @@ export const CuratorModal: React.FC<CuratorModalProps> = ({
             {/* TAB 5: EVIDENCE ("KANITINI GÖSTER") */}
             {activeTab === 'evidence' && isGuessed && (
               <div className="space-y-3">
-                <div className="bg-[#f0f9ff]/80 border-2 border-[#0284c7]/45 rounded-2xl p-3.5 sm:p-4 shadow-xs">
-                  <h4 className="text-base sm:text-lg font-serif font-bold text-[#0f766e] leading-snug">
-                    {scholar.evidenceQuestion}
-                  </h4>
-                </div>
+                <h4 className="text-base sm:text-lg font-serif font-bold text-black leading-snug px-0.5">
+                  {scholar.evidenceQuestion}
+                </h4>
 
-                {/* Evidence options */}
-                <div className="space-y-1.5 px-1">
+                {/* Evidence options in thin card container */}
+                <div className="bg-white/80 border border-slate-200 rounded-2xl p-2 sm:p-2.5 shadow-xs space-y-1.5">
                   {shuffledEvidenceOptions.map((opt, idx) => {
                     const isSelected = selectedEvidenceOpt === idx;
                     return (
@@ -663,7 +657,7 @@ export const CuratorModal: React.FC<CuratorModalProps> = ({
                             ? opt.isCorrect
                               ? 'bg-emerald-50 border-2 border-emerald-500 text-emerald-950 font-semibold shadow-xs'
                               : 'bg-rose-50 border-2 border-rose-400 text-rose-950 font-medium shadow-xs'
-                            : 'bg-white/80 border-slate-200 text-slate-700 hover:bg-slate-100/80 hover:text-slate-900'
+                            : 'bg-white border border-slate-200 text-slate-800 hover:bg-[#f0fdfa] hover:border-[#0d9488]/50 hover:text-slate-950 shadow-2xs'
                         }`}
                       >
                         <span
@@ -672,7 +666,7 @@ export const CuratorModal: React.FC<CuratorModalProps> = ({
                               ? opt.isCorrect
                                 ? 'bg-emerald-600 text-white shadow-xs'
                                 : 'bg-rose-600 text-white shadow-xs'
-                              : 'bg-slate-100 border border-slate-300 text-slate-600 group-hover:bg-slate-200 group-hover:text-[#0f766e]'
+                              : 'bg-slate-100 border border-slate-300 text-slate-600 group-hover:bg-[#0d9488]/15 group-hover:text-[#0f766e]'
                           }`}
                         >
                           {isSelected ? (opt.isCorrect ? '✓' : '✕') : String.fromCharCode(65 + idx)}
